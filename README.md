@@ -58,6 +58,8 @@
 
 ## Start here
 
+**Research:** [Browse the Papers catalog](papers/README.md) for published preprints and their authoritative DOI records.
+
 **Choose your language, then one of the two routes below.** [Visit the OpenCyber Academy study site](https://opencyber.academy/) to browse [by level](https://opencyber.academy/levels/) or [by subject](https://opencyber.academy/subjects/), or use the direct GitHub indexes. Public reading requires no account. The bookshelf above combines numbered chapter anchors in all nine language editions; it does not certify completed courses, daily lessons or translations. [Read its method](WRITING_PROGRESS.md).
 
 **Route 1 — one course:** language → academic area → formation level → that edition's course guide, principal book, weekly chapters and daily lessons.
@@ -350,6 +352,10 @@ These are **forks of other projects**. Their upstream authorship and license ter
 - [hiagokinlevi.github.io](https://github.com/hiagokinlevi/hiagokinlevi.github.io) — public portfolio website.
 
 The [project categories](CATEGORIES.md) give context for the original security software. New public repositories can be added to this index without changing the academic taxonomy.
+
+## Papers
+
+The [Papers catalog](papers/README.md) currently lists DAI and ADAI, two distinct preprints with English and Portuguese reading editions. Additional papers join after individual scientific and rights review; a provisional manuscript is not counted as published.
 
 ## Rights, progress and navigation
 
