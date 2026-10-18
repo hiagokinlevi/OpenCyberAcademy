@@ -23,7 +23,7 @@ const schema = structuredData || [
     <meta name="theme-color" content="#070e1c" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="canonical" href={canonical} />
-    {(path === '/' || path === '/about/') && ['en', 'pt', 'es'].map(language =>
+    {(['/', '/about/', '/share/'].includes(path)) && ['en', 'pt', 'es'].map(language =>
       <link rel="alternate" hreflang={language} href={`https://${language === 'en' ? '' : language + '.'}opencyber.academy${path}`} />)}
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="OpenCyber Academy" />
@@ -74,6 +74,7 @@ const schema = structuredData || [
             <a href="/insights/" aria-current={path === '/insights/' ? 'page' : undefined}>Public activity</a>
             <a href="/for-ai/" aria-current={path === '/for-ai/' ? 'page' : undefined}>For AIs</a>
             <a href="/about/" aria-current={path === '/about/' ? 'page' : undefined}>About us</a>
+            <a href="/share/" aria-current={path === '/share/' ? 'page' : undefined}>Share a lesson</a>
             <a href="/read/?path=BOOK_STANDARD.md">Editorial standard</a>
           </div></details>
         </nav>
@@ -82,14 +83,14 @@ const schema = structuredData || [
           <button id="theme-toggle" class="icon-button" type="button" aria-label="Toggle light and dark theme" title="Toggle theme"><MoonStar size={18} aria-hidden="true" /></button>
           <a class="button secondary account-link" href="/account/"><UserRound size={16} aria-hidden="true" /> My area</a>
         </div>
-        <details class="mobile-nav"><summary aria-label="Open site menu">Menu</summary><nav class="mobile-nav-panel" aria-label="Mobile navigation"><a href="/levels/">By level</a><a href="/subjects/">By subject</a><a href="/#comece">Start here</a><a href="/tests/">Tests</a><a href="/tabletop/">TableTop</a><a href="/insights/">Public activity</a><a href="/account/#connect-ai" data-student-ai-link hidden>Connect your AI</a><a href="/calendar/">Study calendar</a><a href="/for-ai/">For AIs</a><a href="/about/">About us</a><a href="/read/?path=BOOK_STANDARD.md">Editorial standard</a><a href="/account/">My area</a></nav></details>
+        <details class="mobile-nav"><summary aria-label="Open site menu">Menu</summary><nav class="mobile-nav-panel" aria-label="Mobile navigation"><a href="/levels/">By level</a><a href="/subjects/">By subject</a><a href="/#comece">Start here</a><a href="/tests/">Tests</a><a href="/tabletop/">TableTop</a><a href="/insights/">Public activity</a><a href="/account/#connect-ai" data-student-ai-link hidden>Connect your AI</a><a href="/calendar/">Study calendar</a><a href="/for-ai/">For AIs</a><a href="/about/">About us</a><a href="/share/">Share a lesson</a><a href="/read/?path=BOOK_STANDARD.md">Editorial standard</a><a href="/account/">My area</a></nav></details>
       </div>
     </header>
     <main id="main"><slot /></main>
     <footer class="footer">
       <div class="shell footer-inner">
         <span>© OpenCyber Academy · <span>Open learning library</span><small class="footer-usage">This page: <strong data-insight="page.views">—</strong> opt-in views in 30 days</small></span>
-        <div class="footer-links"><a href="/levels/" data-language-link>By level</a><a href="/subjects/" data-language-link>By subject</a><a href="/tests/">Tests</a><a href="/tabletop/">TableTop</a><a href="/calendar/" data-study-calendar-link>Study calendar</a><a href="/insights/">Public activity</a><a href="/for-ai/">API & MCP</a><a href="/about/">About us</a><a href="/read/?path=RIGHTS.md">Rights</a><a href="/privacy/">Privacy</a></div>
+        <div class="footer-links"><a href="/levels/" data-language-link>By level</a><a href="/subjects/" data-language-link>By subject</a><a href="/tests/">Tests</a><a href="/tabletop/">TableTop</a><a href="/calendar/" data-study-calendar-link>Study calendar</a><a href="/insights/">Public activity</a><a href="/for-ai/">API & MCP</a><a href="/about/">About us</a><a href="/share/">Share a lesson</a><a href="/read/?path=RIGHTS.md">Rights</a><a href="/privacy/">Privacy</a></div>
       </div>
     </footer>
     <script>

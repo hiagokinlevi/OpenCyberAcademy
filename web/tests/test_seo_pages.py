@@ -107,6 +107,31 @@ def test_chapter_search_preview_uses_teaching_prose(client, language, area, teac
     assert structured[0]["description"] == description
 
 
+def test_share_hub_offers_published_starters_and_localized_search_pages(client):
+    starters = (
+        "/courses/rapid-1-month/cybersecurity/chapters/en/1/",
+        "/courses/rapid-1-month/information-security/chapters/pt/1/",
+        "/courses/rapid-1-month/information-security/chapters/es/1/",
+    )
+    for language, heading in (
+        ("en", "Invite someone to start studying."),
+        ("pt", "Convide alguém para começar a estudar."),
+        ("es", "Invita a alguien a empezar a estudiar."),
+    ):
+        host = "opencyber.academy" if language == "en" else f"{language}.opencyber.academy"
+        page = client.get("/share/", headers={"host": host})
+        assert page.status_code == 200
+        assert f'<html lang="{language}"' in page.text
+        assert heading in page.text
+        assert f'<link rel="canonical" href="https://{host}/share/">' in page.text
+        assert '<meta name="robots" content="index,follow' in page.text
+        for starter in starters:
+            assert starter in page.text
+        sitemap = (ROOT / f"web/public/sitemap-{language}-pages.xml").read_text()
+        assert f"https://{host}/share/" in sitemap
+    assert 'href="/courses/rapid-1-month/cybersecurity/chapters/en/1/"' in client.get("/").text
+
+
 def test_lesson_test_link_uses_its_week_and_chapter_matches_published_index(client):
     for lesson_number, chapter in ((5, 1), (6, 2), (11, 3), (16, 4)):
         response = client.get(f"/courses/rapid-1-month/incident-response-resilience/lessons/en/{lesson_number}/")

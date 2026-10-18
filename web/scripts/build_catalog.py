@@ -177,21 +177,21 @@ if __name__ == "__main__":
     index = authored_index()
     OUTPUT.write_text(json.dumps(data, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
     LESSON_INDEX.write_text(json.dumps(index, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
-    common = ["/", "/about/", "/levels/", "/subjects/", "/for-ai/", "/privacy/"]
+    common = ["/", "/about/", "/share/", "/levels/", "/subjects/", "/for-ai/", "/privacy/"]
     common.extend(f"/levels/{level}/" for level in data["level_order"])
     common.extend(f"/subjects/{course['area']}/" for course in data["courses"] if course["level"] == data["level_order"][0])
     common.extend(f"/courses/{course['level']}/{course['area']}/" for course in data["courses"])
     tabletop = json.loads((ROOT / "web/tabletop/scenarios.json").read_text(encoding="utf-8"))
     tabletop_routes = ["/tabletop/"] + [f"/tabletop/{case['id']}/" for case in tabletop["scenarios"]]
     common.extend(tabletop_routes)
-    by_language = {language: (["/", "/about/"] if language in INDEXED_LANGUAGES else [])
+    by_language = {language: (["/", "/about/", "/share/"] if language in INDEXED_LANGUAGES else [])
                    for language in LANGUAGES}
     by_language["en"] = common
     for language in ("pt", "es"):
         by_language[language].extend(tabletop_routes)
     translation_groups: dict[tuple[str, ...], dict[str, str]] = {}
     for language in INDEXED_LANGUAGES:
-        for route in ("/", "/about/", *tabletop_routes):
+        for route in ("/", "/about/", "/share/", *tabletop_routes):
             translation_groups.setdefault((route,), {})[language] = site_for_language(language) + route
     alternates = {
         url: dict(sorted(variants.items()))

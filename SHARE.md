@@ -2,6 +2,8 @@
 
 OpenCyber Academy offers free, public cybersecurity learning material. Start with a specific published lesson, try its exercise, and compare your reasoning with the worked answer. Reading does not require an account.
 
+The [site sharing page](https://opencyber.academy/share/) offers ready-to-copy invitations for readers in English, Portuguese and Spanish.
+
 | Language | Published lesson | Explore more |
 |---|---|---|
 | English | [Cybersecurity: foundations and decisions](https://opencyber.academy/courses/rapid-1-month/cybersecurity/chapters/en/1/) | [Browse subjects](https://opencyber.academy/subjects/) |

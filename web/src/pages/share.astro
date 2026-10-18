@@ -1,0 +1,77 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const invitations = [
+  {
+    language: 'en', label: 'English', title: 'Cybersecurity: foundations and decisions',
+    url: 'https://opencyber.academy/courses/rapid-1-month/cybersecurity/chapters/en/1/',
+    message: 'Want to study cybersecurity for free? Start with this OpenCyber Academy chapter. Read the example, try an exercise, then compare the worked answer. No account is needed to read.',
+    action: 'Copy invitation', copied: 'Invitation and link copied.',
+    fallback: 'Copy the message above and the lesson link below.',
+  },
+  {
+    language: 'pt', label: 'Português', title: 'Segurança da informação: capítulo 1',
+    url: 'https://pt.opencyber.academy/courses/rapid-1-month/information-security/chapters/pt/1/',
+    message: 'Quer estudar cibersegurança gratuitamente? Comece por este capítulo da OpenCyber Academy. Leia o exemplo, tente um exercício e compare a resposta comentada. Não é preciso criar uma conta para ler.',
+    action: 'Copiar convite', copied: 'Convite e link copiados.',
+    fallback: 'Copie a mensagem acima e o link da aula abaixo.',
+  },
+  {
+    language: 'es', label: 'Español', title: 'Seguridad de la información: capítulo 1',
+    url: 'https://es.opencyber.academy/courses/rapid-1-month/information-security/chapters/es/1/',
+    message: '¿Quieres estudiar ciberseguridad gratis? Empieza con este capítulo de OpenCyber Academy. Lee el ejemplo, intenta un ejercicio y compara la respuesta explicada. No necesitas una cuenta para leer.',
+    action: 'Copiar invitación', copied: 'Invitación y enlace copiados.',
+    fallback: 'Copia el mensaje anterior y el enlace de la lección.',
+  },
+];
+---
+<BaseLayout title="Share a free cybersecurity lesson · OpenCyber Academy" description="Invite someone to study a published OpenCyber Academy lesson in English, Portuguese or Spanish. Free examples, exercises and worked answers; no account required to read.">
+  <section class="directory-heading"><div class="shell">
+    <div class="eyebrow">SHARE OPEN LEARNING</div>
+    <h1>Invite someone to start studying.</h1>
+    <p>Choose a published lesson in the language they read. Each link opens teaching, practice and worked answers. Reading is free and requires no account.</p>
+  </div></section>
+  <section class="section"><div class="shell">
+    <div class="section-head"><h2>Choose a lesson to share</h2><p>These are published entry points. The course guide shows what is available next in each language.</p></div>
+    <div class="share-grid">
+      {invitations.map(invitation => <article class="card share-card" lang={invitation.language}>
+        <div class="eyebrow">{invitation.label}</div>
+        <h3>{invitation.title}</h3>
+        <p class="share-message">{invitation.message}</p>
+        <a class="share-url" href={invitation.url}>{invitation.url}</a>
+        <div class="share-actions">
+          <button class="button gold" type="button" data-copy-invitation={invitation.message} data-url={invitation.url} data-copied={invitation.copied} data-fallback={invitation.fallback}>{invitation.action}</button>
+          <span role="status" aria-live="polite"></span>
+        </div>
+      </article>)}
+    </div>
+    <div class="share-next">
+      <h2>How to use this with a group</h2>
+      <p>Send one lesson, ask learners to try an exercise before opening the worked answer, then discuss their reasoning.</p>
+      <a class="button secondary" href="/subjects/" data-language-link>Find a different subject →</a>
+    </div>
+  </div></section>
+  <script>
+    for (const button of document.querySelectorAll<HTMLButtonElement>('[data-copy-invitation]')) {
+      button.addEventListener('click', async () => {
+        const status = button.parentElement?.querySelector<HTMLElement>('[role="status"]');
+        try {
+          await navigator.clipboard.writeText(`${button.dataset.copyInvitation}\n${button.dataset.url}`);
+          if (status) status.textContent = button.dataset.copied || '';
+        } catch {
+          if (status) status.textContent = button.dataset.fallback || '';
+        }
+      });
+    }
+  </script>
+  <style>
+    .share-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 20px; }
+    .share-card { display: flex; flex-direction: column; gap: 14px; padding: 24px; min-width: 0; }
+    .share-card h3, .share-card p { margin: 0; }
+    .share-message { color: var(--muted); line-height: 1.65; }
+    .share-url { overflow-wrap: anywhere; font-size: .9rem; }
+    .share-actions { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; margin-top: auto; }
+    .share-actions [role="status"] { min-height: 1.4em; font-size: .85rem; color: var(--muted); }
+    .share-next { max-width: 700px; margin-top: 48px; }
+  </style>
+</BaseLayout>

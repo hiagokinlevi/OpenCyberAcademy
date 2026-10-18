@@ -73,7 +73,7 @@ def localized_page(source: str, language: str, route: str) -> str:
     origin = f"https://{language}.opencyber.academy"
     result = result.replace('<link rel="canonical" href="https://opencyber.academy', f'<link rel="canonical" href="{origin}', 1)
     result = result.replace('<meta property="og:url" content="https://opencyber.academy', f'<meta property="og:url" content="{origin}', 1)
-    if route not in {"/", "/about/"}:
+    if route not in {"/", "/about/", "/share/"}:
         result = result.replace('content="index,follow,max-image-preview:large"', 'content="noindex,follow"', 1)
     metadata = {
         "/": {
@@ -83,6 +83,10 @@ def localized_page(source: str, language: str, route: str) -> str:
         "/about/": {
             "pt": ("Sobre nós · OpenCyber Academy", "Conheça a OpenCyber Academy e seu fundador, Hiago Kin Levi. Livros e aulas gratuitos de cibersegurança para todos."),
             "es": ("Sobre nosotros · OpenCyber Academy", "Conoce OpenCyber Academy y a su fundador, Hiago Kin Levi. Libros y lecciones gratuitos de ciberseguridad para todos."),
+        },
+        "/share/": {
+            "pt": ("Compartilhe uma aula gratuita · OpenCyber Academy", "Convide alguém para estudar uma aula publicada da OpenCyber Academy em inglês, português ou espanhol. Exemplos, exercícios e respostas comentadas, sem cadastro para ler."),
+            "es": ("Comparte una lección gratuita · OpenCyber Academy", "Invita a alguien a estudiar una lección publicada de OpenCyber Academy en inglés, portugués o español. Ejemplos, ejercicios y respuestas explicadas, sin registro para leer."),
         },
         "/privacy/": {
             "pt": ("Privacidade e análise de uso opcional · OpenCyber Academy", "Estude sem cadastro e escolha se deseja permitir a medição opcional de visitas às aulas públicas."),

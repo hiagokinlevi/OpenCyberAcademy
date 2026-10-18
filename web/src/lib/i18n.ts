@@ -16,6 +16,15 @@ export function editionLanguage(): string {
 // Interface text only. Course manuscripts and quoted reference documents retain
 // the language of their published edition.
 const copy: Record<string, [string, string]> = {
+  'Share a lesson': ['Compartilhar uma aula', 'Compartir una lección'],
+  'SHARE OPEN LEARNING': ['COMPARTILHE O APRENDIZADO ABERTO', 'COMPARTE EL APRENDIZAJE ABIERTO'],
+  'Invite someone to start studying.': ['Convide alguém para começar a estudar.', 'Invita a alguien a empezar a estudiar.'],
+  'Choose a published lesson in the language they read. Each link opens teaching, practice and worked answers. Reading is free and requires no account.': ['Escolha uma aula publicada no idioma da pessoa. Cada link abre explicações, exercícios e respostas comentadas. A leitura é gratuita e não exige cadastro.', 'Elige una lección publicada en el idioma de la persona. Cada enlace abre explicaciones, ejercicios y respuestas desarrolladas. La lectura es gratuita y no requiere una cuenta.'],
+  'Choose a lesson to share': ['Escolha uma aula para compartilhar', 'Elige una lección para compartir'],
+  'These are published entry points. The course guide shows what is available next in each language.': ['Estes são pontos de partida publicados. O guia do curso mostra o que vem a seguir em cada idioma.', 'Estos son puntos de partida publicados. La guía del curso muestra qué está disponible después en cada idioma.'],
+  'How to use this with a group': ['Como usar com um grupo', 'Cómo usarlo con un grupo'],
+  'Send one lesson, ask learners to try an exercise before opening the worked answer, then discuss their reasoning.': ['Envie uma aula, peça que as pessoas tentem um exercício antes de abrir a resposta comentada e depois conversem sobre o raciocínio.', 'Envía una lección, pide que intenten un ejercicio antes de abrir la respuesta explicada y luego conversen sobre su razonamiento.'],
+  'Find a different subject →': ['Encontrar outro assunto →', 'Encontrar otro tema →'],
   'PUBLIC STUDY ACTIVITY': ['ATIVIDADE PÚBLICA DE ESTUDO', 'ACTIVIDAD PÚBLICA DE ESTUDIO'],
   'Learning in motion': ['O estudo em movimento', 'El aprendizaje en marcha'],
   'Last 30 days · visitors who chose analytics': ['Últimos 30 dias · visitantes que permitiram análise de uso', 'Últimos 30 días · visitantes que permitieron el análisis de uso'],
