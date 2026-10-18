@@ -1,5 +1,6 @@
 """Search pages must expose real authored lessons and safe, stable metadata."""
 
+import html
 import json
 import re
 import xml.etree.ElementTree as ET
@@ -84,6 +85,26 @@ def test_published_chapter_can_share_its_canonical_link(client, language, area, 
     assert f'id="share-lesson" type="button" data-url="{canonical}"' in response.text
     assert label in response.text
     assert f'<a href="{canonical}">' in response.text
+
+
+@pytest.mark.parametrize("language,area,teaching,checklist", [
+    ("en", "cybersecurity", "Security begins with a question", "Describe an asset"),
+    ("pt", "information-security", "Sofia Lindqvist é a gerente", "Você vai (1)"),
+    ("es", "information-security", "Sofia Lindqvist es la gerente", "Usted va a (1)"),
+])
+def test_chapter_search_preview_uses_teaching_prose(client, language, area, teaching, checklist):
+    path = f"/courses/rapid-1-month/{area}/chapters/{language}/1/"
+    response = client.get(path, headers={"host": f"{language}.opencyber.academy"})
+    assert response.status_code == 200
+    description = html.unescape(re.search(r'<meta name="description" content="([^"]*)">', response.text).group(1))
+    assert teaching in description
+    assert checklist not in description
+    assert len(description) <= 158
+    escaped = html.escape(description, quote=True)
+    assert f'<meta property="og:description" content="{escaped}">' in response.text
+    assert f'<meta name="twitter:description" content="{escaped}">' in response.text
+    structured = json.loads(re.search(r'<script type="application/ld\+json">(.*?)</script>', response.text, re.S).group(1))
+    assert structured[0]["description"] == description
 
 
 def test_lesson_test_link_uses_its_week_and_chapter_matches_published_index(client):

@@ -51,14 +51,22 @@ def lesson_path(level: str, area: str, language: str, number: int, kind: str = "
 
 
 def plain_description(source: str, fallback: str) -> str:
-    """Use authored prose, not an outline or a fabricated excerpt."""
+    """Use the lesson's teaching prose, not its learning-outcome checklist."""
     for paragraph in re.split(r"\n\s*\n", source):
         if paragraph.lstrip().startswith(("#", "<a ", "**Week ", "**Month ", "```", "|", "- ")):
             continue
         paragraph = re.sub(r"<[^>]+>|`+|\[([^]]+)\]\([^)]*\)|[*_#>]", r"\1", paragraph)
         paragraph = " ".join(paragraph.split())
+        if re.match(
+            r"^(?:After this (?:chapter|lesson)\b|By the end of this (?:chapter|lesson)\b|"
+            r"Você vai\b|Ao final desta (?:aula|lição)\b|Usted va a\b|"
+            r"Al finalizar esta (?:lección|unidad)\b|\d+[.)]\s)",
+            paragraph,
+            re.I,
+        ):
+            continue
         if len(paragraph) >= 55 and not paragraph.startswith(("|", "```", "!")):
-            return paragraph[:157].rstrip(" .,;:") + ("…" if len(paragraph) > 157 else "")
+            return paragraph
     return fallback
 
 
@@ -229,7 +237,9 @@ def render_lesson_page(lesson: dict, course: dict, level_name: str, kind: str = 
         "es": f"Estudia {lesson['title']} en el curso gratuito de {name}. Lee la lección, resuelve los ejercicios y consulta las respuestas desarrolladas.",
     }
     excerpt = plain_description(lesson["markdown"], fallback_description.get(language, fallback_description["en"]))
-    description = f"{unit_code} · {lesson['title']}. {excerpt}"[:160].rstrip(" .,;:")
+    description = f"{unit_code} · {lesson['title']}. {excerpt}"
+    if len(description) > 157:
+        description = description[:157].rsplit(" ", 1)[0].rstrip(" .,;:") + "…"
     escaped = {key: html.escape(value, quote=True) for key, value in {"canonical": canonical, "course_url": course_url, "title": title, "description": description, "name": name, "level_name": level_name, "lesson_title": lesson["title"]}.items()}
     structured = [
         {"@context": "https://schema.org", "@type": "LearningResource", "name": lesson["title"], "identifier": unit_code, "description": description, "url": canonical,
