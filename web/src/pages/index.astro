@@ -60,15 +60,15 @@ const areaBridges: Record<string, string> = {
   'critical-sector-security': 'End of the suggested area route. Revisit any subject at a deeper level or follow its course lessons.',
 };
 ---
-<BaseLayout title="OpenCyber Academy — free online cybersecurity courses and advanced study" description="Study cybersecurity online for free, from a first course through undergraduate, master's and doctoral levels. Open lessons, examples and exercises for everyone.">
+<BaseLayout title="OpenCyber Academy — free cybersecurity lessons and guided practice" description="Learn cybersecurity for free with public lessons, worked examples, exercises and explained answers. Choose a subject and study level; no account required.">
   <section class="hero">
     <div class="shell hero-grid">
       <div class="hero-copy">
         <div class="eyebrow"><span class="live-dot"></span> OPEN LIBRARY · PUBLIC SOURCE</div>
-        <h1>Take a course. Study at undergraduate, master's or <span class="gold-text">doctoral level.</span></h1>
-        <p>Online, free and open. Grow your cybersecurity knowledge dynamically and continuously through lessons, examples and exercises at the level you choose. No account is required to learn.</p>
-        <div class="hero-actions"><a class="button gold" href="#comece"><Sparkles size={18} aria-hidden="true" /> Start learning <ArrowUpRight size={16} aria-hidden="true" /></a><a class="button secondary" href="/for-ai/">Connect an AI <ArrowUpRight size={16} aria-hidden="true" /></a></div>
-        <div class="hero-metrics"><div><strong>207</strong><span>courses mapped</span></div><div><strong>23</strong><span>subject areas</span></div><div><strong>9</strong><span>study levels</span></div></div>
+        <h1>Learn cybersecurity through <span class="gold-text">open lessons and practice.</span></h1>
+        <p>Choose a subject and study level. Read published teaching, work through an example, try an exercise and compare the explained answer. Free to read, with no account required.</p>
+        <div class="hero-actions"><a class="button gold" href="#comece"><Sparkles size={18} aria-hidden="true" /> Choose your path <ArrowUpRight size={16} aria-hidden="true" /></a><a class="button secondary" href="/courses/rapid-1-month/cybersecurity/lessons/en/1/">Read a sample lesson (English) <ArrowUpRight size={16} aria-hidden="true" /></a></div>
+        <div class="hero-benefits"><div><strong>Open lessons</strong><span>Read without signing in</span></div><div><strong>Worked practice</strong><span>Examples, exercises and answers</span></div><div><strong>Clear next steps</strong><span>Follow published teaching</span></div></div>
       </div>
       <div class="hero-visual" aria-label="A preview of the subject learning map">
         <div class="preview-top"><span>OPEN CYBER ACADEMY / STUDY ROUTE</span><span>01—23</span></div>
@@ -255,10 +255,10 @@ const areaBridges: Record<string, string> = {
   .live-dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 0 5px var(--gold-soft); margin-right: 9px; }
   .hero-copy > p { color: var(--muted); font-size: 1.14rem; max-width: 590px; line-height: 1.7; }
   .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 29px; }
-  .hero-metrics { display: flex; gap: 34px; margin-top: 47px; }
-  .hero-metrics > div { border-left: 1px solid var(--line); padding-left: 18px; display: grid; line-height: 1.25; }
-  .hero-metrics strong { font: 600 1.45rem 'Titillium Web', sans-serif; }
-  .hero-metrics span { font-size: .78rem; color: var(--muted); margin-top: 5px; }
+  .hero-benefits { display: flex; gap: 24px; margin-top: 47px; }
+  .hero-benefits > div { border-left: 1px solid var(--line); padding-left: 18px; display: grid; line-height: 1.25; }
+  .hero-benefits strong { font: 600 1.12rem 'Titillium Web', sans-serif; }
+  .hero-benefits span { font-size: .78rem; color: var(--muted); margin-top: 5px; }
   .hero-visual { min-height: 440px; padding: 25px; display: flex; flex-direction: column; border: 1px solid color-mix(in srgb, var(--gold) 32%, var(--line)); border-radius: 5px; background: linear-gradient(150deg, var(--surface), var(--bg-2)); box-shadow: 0 24px 58px rgba(0,3,14,.18); }
   .preview-top { display: flex; justify-content: space-between; color: var(--muted); font-size: .72rem; font-weight: 600; letter-spacing: .12em; border-bottom: 1px solid var(--line); padding-bottom: 13px; }
   .preview-current { margin-top: 29px; }
@@ -347,8 +347,8 @@ const areaBridges: Record<string, string> = {
     .hero { padding-top: 55px; }
     .hero-visual { padding: 19px; }
     .preview-line span { font-size: .49rem; }
-    .hero-metrics { gap: 10px; margin-top: 37px; justify-content: space-between; }
-    .hero-metrics > div { padding-left: 10px; }
+    .hero-benefits { flex-direction: column; gap: 14px; margin-top: 37px; }
+    .hero-benefits > div { padding-left: 12px; }
     .map-intro { align-items: start; flex-direction: column; }
     .map-nodes { grid-template-columns: 1fr; }
     .map-phase { padding: 13px; }
