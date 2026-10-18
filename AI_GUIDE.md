@@ -1,6 +1,6 @@
 # OpenCyber Academy reference guide for AI assistants and readers
 
-**Daily lesson model:** The [curriculum grid](CURRICULUM_GRID.md) defines five instructional weekdays per week and one distinct numbered lesson per day, normally five lessons within a weekly chapter. Each authored daily lesson must teach a bounded concept, show a worked example, assign at least one substantive exercise, link its worked answer, and supply previous/index/next navigation. Subjects organize modules; they are not one-day lessons. The 20–1,300 lesson counts are minimum baselines, with **no maximum chapter or lesson length**. Existing subject-chapter indexes and bookshelf percentages describe the older module structure, not completion of the daily sequence. Assess each language edition from its own manuscript, not another edition's availability.
+**Daily lesson model:** The [curriculum grid](CURRICULUM_GRID.md) defines five instructional weekdays per week and one distinct numbered lesson per day, normally five lessons within a weekly chapter. Each authored daily lesson must teach a bounded concept, show a worked example, assign at least one substantive exercise, link its worked answer, and supply previous/index/next navigation. Subjects organize modules; they are not one-day lessons. The 20–1,300 lesson counts are minimum baselines, with **no maximum chapter or lesson length**. Existing subject-chapter indexes and structural coverage tables describe the older module structure, not completion of the daily sequence. Assess each language edition from its own manuscript, not another edition's availability.
 
 OpenCyber Academy is a public, free Markdown learning library. Its [home page](README.md) is the main entry point. Use the [two onboarding routes](README.md#comece-por-aqui): **language → topic → level → course lesson guide**, or **language → level → all topics and their lesson guides**. Both lead to the existing course editions; the directory hierarchy is not a restriction on how a learner chooses a route. Plans and public drafts must be described with their actual editorial state.
 
@@ -61,7 +61,7 @@ Each course has **one skill** and **one principal book per language**. Existing 
 
 A plan is not a written lesson. A public draft is not a technically reviewed book. A completed edition meets the [book standard](BOOK_STANDARD.md): the learning chain, worked examples, answered exercises, accurate sources and editorial review. Page count and lesson count are not completion gates. The course titles describe intended depth; they do not confer an accredited degree.
 
-The percentages inside the README bookshelf measure **English chapter draft coverage** by area, using the method in [WRITING_PROGRESS.md](WRITING_PROGRESS.md). They are separate from tailored chapter-plan coverage and from the number of books that have passed the completion gate. Do not present a bookshelf percentage as book completion or translated-content progress.
+The [area-by-language writing table](WRITING_PROGRESS.md) measures chapter-anchor coverage; the [course writing table](COURSE_WRITING_PROGRESS.md) uses a separate English draft-depth test. Neither measure is tailored chapter-plan coverage or a count of books that have passed the completion gate. Do not present a coverage percentage as book completion or translated-content progress.
 
 ## Quality-first learning reviews
 
