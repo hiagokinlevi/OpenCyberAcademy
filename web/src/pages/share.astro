@@ -6,21 +6,21 @@ const invitations = [
     language: 'en', label: 'English', title: 'Cybersecurity: foundations and decisions',
     url: 'https://opencyber.academy/courses/rapid-1-month/cybersecurity/chapters/en/1/',
     message: 'Want to study cybersecurity for free? Start with this OpenCyber Academy chapter. Read the example, try an exercise, then compare the worked answer. No account is needed to read.',
-    action: 'Copy invitation', copied: 'Invitation and link copied.',
+    action: 'Copy invitation', shareAction: 'Share lesson', copied: 'Invitation and link copied.',
     fallback: 'Copy the message above and the lesson link below.',
   },
   {
     language: 'pt', label: 'Português', title: 'Segurança da informação: capítulo 1',
     url: 'https://pt.opencyber.academy/courses/rapid-1-month/information-security/chapters/pt/1/',
     message: 'Quer estudar cibersegurança gratuitamente? Comece por este capítulo da OpenCyber Academy. Leia o exemplo, tente um exercício e compare a resposta comentada. Não é preciso criar uma conta para ler.',
-    action: 'Copiar convite', copied: 'Convite e link copiados.',
+    action: 'Copiar convite', shareAction: 'Compartilhar aula', copied: 'Convite e link copiados.',
     fallback: 'Copie a mensagem acima e o link da aula abaixo.',
   },
   {
     language: 'es', label: 'Español', title: 'Seguridad de la información: capítulo 1',
     url: 'https://es.opencyber.academy/courses/rapid-1-month/information-security/chapters/es/1/',
     message: '¿Quieres estudiar ciberseguridad gratis? Empieza con este capítulo de OpenCyber Academy. Lee el ejemplo, intenta un ejercicio y compara la respuesta explicada. No necesitas una cuenta para leer.',
-    action: 'Copiar invitación', copied: 'Invitación y enlace copiados.',
+    action: 'Copiar invitación', shareAction: 'Compartir lección', copied: 'Invitación y enlace copiados.',
     fallback: 'Copia el mensaje anterior y el enlace de la lección.',
   },
 ];
@@ -40,7 +40,10 @@ const invitations = [
         <p class="share-message">{invitation.message}</p>
         <a class="share-url" href={invitation.url}>{invitation.url}</a>
         <div class="share-actions">
-          <button class="button gold" type="button" data-copy-invitation={invitation.message} data-url={invitation.url} data-copied={invitation.copied} data-fallback={invitation.fallback}>{invitation.action}</button>
+          <div class="share-buttons">
+            <button class="button gold" type="button" data-copy-invitation={invitation.message} data-url={invitation.url} data-copied={invitation.copied} data-fallback={invitation.fallback}>{invitation.action}</button>
+            <button class="button secondary" type="button" data-share-invitation={invitation.message} data-title={invitation.title} data-url={invitation.url} data-copied={invitation.copied} data-fallback={invitation.fallback} hidden>{invitation.shareAction}</button>
+          </div>
           <span role="status" aria-live="polite"></span>
         </div>
       </article>)}
@@ -52,14 +55,26 @@ const invitations = [
     </div>
   </div></section>
   <script>
+    async function copyInvitation(button: HTMLButtonElement, message: string) {
+      const status = button.closest('.share-actions')?.querySelector<HTMLElement>('[role="status"]');
+      try {
+        await navigator.clipboard.writeText(`${message}\n${button.dataset.url}`);
+        if (status) status.textContent = button.dataset.copied || '';
+      } catch {
+        if (status) status.textContent = button.dataset.fallback || '';
+      }
+    }
     for (const button of document.querySelectorAll<HTMLButtonElement>('[data-copy-invitation]')) {
+      button.addEventListener('click', () => copyInvitation(button, button.dataset.copyInvitation || ''));
+    }
+    if (navigator.share) for (const button of document.querySelectorAll<HTMLButtonElement>('[data-share-invitation]')) {
+      button.hidden = false;
       button.addEventListener('click', async () => {
-        const status = button.parentElement?.querySelector<HTMLElement>('[role="status"]');
         try {
-          await navigator.clipboard.writeText(`${button.dataset.copyInvitation}\n${button.dataset.url}`);
-          if (status) status.textContent = button.dataset.copied || '';
-        } catch {
-          if (status) status.textContent = button.dataset.fallback || '';
+          await navigator.share({ title: button.dataset.title, text: button.dataset.shareInvitation, url: button.dataset.url });
+        } catch (error) {
+          if (error instanceof DOMException && error.name === 'AbortError') return;
+          await copyInvitation(button, button.dataset.shareInvitation || '');
         }
       });
     }
@@ -71,6 +86,8 @@ const invitations = [
     .share-message { color: var(--muted); line-height: 1.65; }
     .share-url { overflow-wrap: anywhere; font-size: .9rem; }
     .share-actions { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; margin-top: auto; }
+    .share-buttons { display: flex; flex-wrap: wrap; gap: 8px; }
+    .share-buttons [hidden] { display: none; }
     .share-actions [role="status"] { min-height: 1.4em; font-size: .85rem; color: var(--muted); }
     .share-next { max-width: 700px; margin-top: 48px; }
   </style>
