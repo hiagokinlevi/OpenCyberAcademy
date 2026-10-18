@@ -14,6 +14,22 @@
   addEventListener('hashchange', revealAnswer);
   revealAnswer();
 
+  const shareButton = document.getElementById('share-lesson');
+  shareButton?.addEventListener('click', async () => {
+    const url = shareButton.dataset.url;
+    try {
+      if (navigator.share) {
+        await navigator.share({ title: shareButton.dataset.title, url });
+        return;
+      }
+      if (!navigator.clipboard?.writeText) throw new Error('Clipboard unavailable');
+      await navigator.clipboard.writeText(url);
+      document.getElementById('share-status').textContent = shareButton.dataset.copied;
+    } catch (error) {
+      if (error.name !== 'AbortError') document.getElementById('share-status').textContent = shareButton.dataset.copyHint;
+    }
+  });
+
   // Record only signed-in study activity. Anonymous reading never reaches D1.
   const lesson = location.pathname.match(/^\/courses\/([a-z0-9-]+)\/([a-z0-9-]+)\/(lessons|chapters)\/([a-z]{2})\/(\d+)\/?$/);
   if (lesson) {

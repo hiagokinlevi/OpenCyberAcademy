@@ -69,6 +69,23 @@ def test_authored_lesson_has_indexable_html_and_stable_navigation(client):
     assert chapter_only.headers["location"] == "/courses/rapid-1-month/information-security/chapters/en/1/"
 
 
+@pytest.mark.parametrize("language,area,label", [
+    ("en", "cybersecurity", "Share this lesson"),
+    ("pt", "information-security", "Compartilhar esta aula"),
+    ("es", "information-security", "Compartir esta lección"),
+])
+def test_published_chapter_can_share_its_canonical_link(client, language, area, label):
+    path = f"/courses/rapid-1-month/{area}/chapters/{language}/1/"
+    response = client.get(path, headers={"host": f"{language}.opencyber.academy"})
+    assert response.status_code == 200
+    origin = "https://opencyber.academy" if language == "en" else f"https://{language}.opencyber.academy"
+    canonical = origin + path
+    assert f'<link rel="canonical" href="{canonical}">' in response.text
+    assert f'id="share-lesson" type="button" data-url="{canonical}"' in response.text
+    assert label in response.text
+    assert f'<a href="{canonical}">' in response.text
+
+
 def test_lesson_test_link_uses_its_week_and_chapter_matches_published_index(client):
     for lesson_number, chapter in ((5, 1), (6, 2), (11, 3), (16, 4)):
         response = client.get(f"/courses/rapid-1-month/incident-response-resilience/lessons/en/{lesson_number}/")

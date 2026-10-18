@@ -48,6 +48,6 @@ For readers who want the editorial detail, see the [lesson inventory](LANGUAGE_L
 
 ## Help more people learn
 
-Share a [specific lesson](levels/rapid-1-month/cybersecurity/en/book/MANUSCRIPT.md#ch-01) or a [topic route](https://opencyber.academy/subjects/) with someone who would use it. For corrections, broken links, missing sources, accessibility problems or ideas, [open a GitHub issue](https://github.com/hiagokinlevi/OpenCyberAcademy/issues/new) with the affected page and a reproducible example. Read the [feedback guide](CONTRIBUTING.md) and [code of conduct](CODE_OF_CONDUCT.md).
+Use the [sharing guide](SHARE.md) to send a specific published lesson in English, Portuguese or Spanish to someone who would use it. For study questions, join [GitHub Discussions](https://github.com/hiagokinlevi/OpenCyberAcademy/discussions). For corrections, broken links, missing sources, accessibility problems or ideas, [open a GitHub issue](https://github.com/hiagokinlevi/OpenCyberAcademy/issues/new/choose) with the affected page and a reproducible example. Read the [feedback guide](CONTRIBUTING.md) and [code of conduct](CODE_OF_CONDUCT.md).
 
 The [research papers](papers/README.md) and [related project index](CATEGORIES.md) are available separately. Papers and linked projects have their own rights; see the [rights notice](RIGHTS.md). OpenCyber Academy is authored and maintained by [hiagokinlevi](https://github.com/hiagokinlevi).

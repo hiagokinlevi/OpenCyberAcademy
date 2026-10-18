@@ -319,6 +319,11 @@ def render_lesson_page(lesson: dict, course: dict, level_name: str, kind: str = 
                      f'<h2>{html.escape(practice_copy[0])}</h2><p class="practice-intro">{html.escape(practice_intro)}</p>{"".join(practice_cards)}</section>') if practice_cards else ""
     diagram_script = '<script src="/seo-diagrams.js" defer></script>' if 'class="language-mermaid"' in body or 'class="language-mermaid"' in answers else ''
     language_name = html.escape(LANGUAGE_NAMES.get(language, language))
+    share_copy = {
+        "en": ("Share this lesson", "Permanent link", "Link copied", "Copy the permanent link"),
+        "pt": ("Compartilhar esta aula", "Link permanente", "Link copiado", "Copie o link permanente"),
+        "es": ("Compartir esta lección", "Enlace permanente", "Enlace copiado", "Copia el enlace permanente"),
+    }.get(language, ("Share this lesson", "Permanent link", "Link copied", "Copy the permanent link"))
     return f'''<!doctype html>
 <html lang="{html.escape(language)}" dir="{'rtl' if language == 'he' else 'ltr'}">
 <head>
@@ -347,6 +352,7 @@ def render_lesson_page(lesson: dict, course: dict, level_name: str, kind: str = 
   <div class="unit-identity"><span>{ui['course_code']}: <strong>{course_code}</strong></span><span>{label} {number:02d}: <strong>{unit_code}</strong></span></div>
   <h1 id="{'lesson' if kind == 'lesson' else 'ch'}-{number:02d}">{escaped['lesson_title']}</h1>
   <p class="intro">{ui['free']}</p>
+  <div class="lesson-share"><button id="share-lesson" type="button" data-url="{escaped['canonical']}" data-title="{escaped['title']}" data-copied="{html.escape(share_copy[2], quote=True)}" data-copy-hint="{html.escape(share_copy[3], quote=True)}">{html.escape(share_copy[0])}</button><a href="{escaped['canonical']}">{html.escape(share_copy[1])}</a><span id="share-status" role="status" aria-live="polite"></span></div>
   <section class="reader-public-usage" aria-label="{html.escape(usage_copy[0], quote=True)}">
     <h2>{html.escape(usage_copy[0])} · 30d</h2>
     <div class="reader-usage-metrics">
