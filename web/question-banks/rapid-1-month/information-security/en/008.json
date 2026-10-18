@@ -5,7 +5,7 @@
   "language": "en",
   "chapter": 8,
   "source_anchor": "ch-08",
-  "source_sha256": "cad6802f3aff9caee5ce66c68f61dc9c6f1094b5eb687faf3e6b52b7bcd179d4",
+  "source_sha256": "f0652cea46931b68b1346e9158e51c006fbc4ee039ae8aff2559892782f12d6b",
   "questions": [
     {
       "id": "Q01",
@@ -29,8 +29,8 @@
         }
       ],
       "correct": "b",
-      "explanation": "The log establishes an outstanding closure question, not a live technical state. Neither a missing entry nor the end of the assignment proves whether the backend accepts authentication. The owner should arrange a scoped status check and approved disabling if the account remains enabled, followed by a true execution record and independent readback. EX062's short rubric says the account is still open, but the detailed theory and expanded answer explicitly reject that inference. This key follows the expanded answer. Hollybank is synthetic; no login, disable action or status result is supplied.",
-      "source": "Chapter 8, §8.1, documentary-gap paragraph; §8.3, account-retirement finding; §8.5, actual evidence and proposed next action; EX062, Expanded worked result — account lifecycle, Model response and Boundary (#answer-ex062). Read the short rubric subject to that explicit evidence limit."
+      "explanation": "The log establishes an outstanding closure question, not a live technical state. Neither a missing entry nor the end of the assignment proves whether the backend accepts authentication. The owner should confirm the target and required authorization, arrange an approved status check and disable only if the account remains enabled, followed by a true execution record and independent readback. The corrected EX062 rubric and worked answer make these steps conditional and reject invented completion. Hollybank is synthetic; no login, disable action or status result is supplied.",
+      "source": "Chapter 8, §8.1, documentary-gap paragraph; §8.3, account-retirement finding; §8.5, actual evidence and proposed next action; EX062, corrected 0–3 rubric and Expanded worked result — account lifecycle, Model response and Boundary (#answer-ex062)."
     },
     {
       "id": "Q02",
