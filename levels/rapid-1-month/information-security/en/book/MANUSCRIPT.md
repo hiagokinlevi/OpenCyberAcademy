@@ -888,13 +888,13 @@ Continue to the next authored lesson.
 
 After this chapter, you should be able to:
 
-1. Treat the log's disable instruction as unfinished until a disable is recorded.
-2. Refuse to leave the locum account enabled because a second factor exists.
-3. Record the disable where Dr. Moss and Sofia can read it.
+1. Distinguish the logged disable instruction from evidence that the locum account is currently enabled, disabled, or independently verified.
+2. Explain why a second factor does not extend a temporary authorization or deactivate an account.
+3. Describe owner-approved status checking, conditional disabling if still enabled, truthful recording after execution, and independent readback without inventing results.
 
 ### 8.1 The second factor is not an off switch
 
-Chapter 2 refused a shared reception login for the locum and created a personal account, with a second factor, before the first patient. The same log says which account to disable when the locum leaves. The monthly routine includes leavers' accounts. A classmate argues the account is safe to keep because sign-in needs the key. The key reduces one path. It does not end the account. A key left at the clinic, or a factor that was never removed, still belongs to an account that should have been closed.
+Chapter 2 refused a shared reception login for the locum and created a personal account, with a second factor, before the first patient. The same log says which account to disable when the locum leaves. The monthly routine includes leavers' accounts. A classmate argues the account is safe to keep because sign-in needs the key. The key reduces one authentication risk; it does not end the account's authorization. A key that remains usable, or a factor that was never unbound, could matter **if** the account were still enabled, but neither condition is verified in this case. Account closure must be checked separately instead of inferred from an authenticator.
 
 The review question is narrow. Does the change log contain the disable, with a date, after the locum's last day? If it does not, the documented finding is **an unresolved account closure**: no completed disable appears in the log. The owner should arrange a check of the exact account's current status, approved deactivation if still enabled, and a real dated execution record and readback after the action. Silence in the log is not proof of current technical state; no disable or sign-in is observed here.
 
@@ -902,8 +902,8 @@ The review question is narrow. Does the change log contain the disable, with a d
 
 | Reason offered for leaving the account | What the log shows | Decision |
 |---|---|---|
-| "The second factor is on." | A control on a live account | Disable anyway, then write it |
-| "The locum might return next month." | No approval from Dr. Moss for a standing account | Disable. A return needs a new approval |
+| "The second factor is on." | A configured authentication control; **current account state is unverified** | Check the specific account through the approved source; if enabled, obtain the required authorization, disable it, then record the real result and verify readback |
+| "The locum might return next month." | A possible future assignment is not current permission or evidence of an enabled account | Close the current authorization through verified account management; any later access requires a fresh Dr. Moss decision about role, dates, and provisioning or approved reactivation |
 | "The week ended, so the system will have expired it." | No such expiry is recorded | Do not assume it |
 | "A dated disable appears in a separate hypothetical file." | Such a line could document an action, not prove current technical status | Verify the record and approved account-state readback rather than repeating an unverified operation |
 
@@ -974,18 +974,18 @@ A returned authentication factor would not necessarily deactivate an account. A 
 
 Complete the original EX062 response first. Then make a four-stage evidence ladder for **requested, authorized, executed, read back**. Write **not supplied** for unsupported steps, and state how a later actual execution date should be documented if deactivation occurs. Your model answer should report what is missing without fabricating a disable result, locum name, system capability, sign-in, incident or new employment approval.
 
-Compare with [EX062 worked result](#answer-ex062). A correct answer ends the unnecessary temporary grant **through an approved, verifiable future action**, not through a statement that it already happened.
+Compare with [EX062 worked result](#answer-ex062). A correct answer **specifies the authorized verification-and-closure path** without claiming it was executed. If an approved status check later shows the account is enabled, a real disable and readback can be recorded at their actual times; if it shows disabled, document that observed state without manufacturing a past operator or disable date.
 
 ### Errors and limits
 
-Disabling the locum account does not remove the reception staff's own accounts, and it does not change the twelve closed files. A later locum is a new account, approved again, not a revival of this one unless Dr. Moss writes that decision.
+A properly scoped locum-account disable, **if needed and actually executed**, concerns that specific account, not unrelated reception identities or the twelve restricted file shares. No disable or technical readback has been supplied here. If a temporary worker returns in a later engagement, Dr. Moss must make a **new, time-bounded authorization decision**; whether the appropriate technical action is a new account or an expressly approved reactivation depends on the actual system and policy, which Hollybank has not established. Neither return nor provisioning is observed.
 
 ### Apply
 
-- **EX062 — Leaver or leftover?** The locum's last day has passed. The log still only says which account to disable. The second factor remains on. What is the finding, and what line must be added? *Rubric:* 3 = the account is still open; disable it; write the date in the change log; the second factor is not a substitute;; 2 = disable and record it;; 1 = one action;; 0 = none.
+- **EX062 — Leaver or leftover?** The locum's last day has passed. The change log identifies which account should be disabled but contains **no completed disable entry**. The second factor remains configured; no account-state readback is supplied. What can be concluded **from the record**, which authorization and status checks are required, what action follows **only if the account is still enabled**, and when may the actual date and result be logged? Do **not** claim a disable has already occurred. *Rubric (0–3):* **3** = identifies a documentary/verification gap without asserting enabled or disabled state; confirms the specific target and Dr. Moss's required authorization; calls for an approved status check, conditional disable if enabled, a dated and attributable record **only after actual execution**, and independent readback; distinguishes MFA from deactivation, without inventing a completion. **2** = correctly identifies the unverified state and conditional closure with truthful later logging, but omits either approval or readback. **1** = identifies only the missing log evidence or only that MFA does not disable accounts, without a complete conditional verification path. **0** = supplies no valid lifecycle distinction or fabricates current technical state, execution, date, approval, or verified closure.
 
-  - **Independent extension:** Separate a disable request, Dr. Moss approval, executed change and status readback. Mark unsupported facts **not supplied**, including real execution date and current backend state.
-  - **Negative controls:** MFA is not disabling, a possible return is not reauthorization, and a missing log line does not prove an observed successful or failed shutdown.
+  - **Independent extension:** Create a four-gate evidence record: **request/target identification**, **Dr. Moss authorization**, **actual disable only if the approved account-state check shows it is enabled**, and **independent readback**. Keep the actual technical state, operator, execution time, and result **not supplied** until genuinely observed; then document only the real outcome.
+  - **Negative controls:** A configured MFA factor is not an off switch; a planned disable is not execution; a missing log entry proves neither enabled nor disabled status; a possible future locum assignment does not authorize access or predetermine new-account versus approved-reactivation mechanics.
   - **Worked result:** [EX062](#answer-ex062).
 
 <!-- open-cyber-academy:chapter-navigation:start ch-08 -->
@@ -1847,7 +1847,7 @@ Model answers for EX001–EX074. Sofia Lindqvist, Mr. Tomasz Nowak, Eastgate Tra
 **Worked counterexample:** A newly shared file or reopened link could invalidate the proposed reduction. A missing folder or duplicate row could change the count without changing access. The marketing count still belongs to the original all-files metric even when public marketing is permitted. Re-running unchanged seed-2 code recreates an artificial fixture, not Hollybank's current state. The correct result preserves old measurement, records the interventions separately and withholds the unobserved second census.
 
 
-**EX062.** The log has no verified completed disable for the locum; identify this as an unresolved closure issue rather than proof of the live backend status. Arrange approved disable if the account is still enabled, record its real execution date only after the action, and verify the resulting state. MFA does not terminate the account.
+**EX062.** The log records an instruction to disable the locum's account, **not** completed deactivation; the current account state is unknown. Confirm the correct account and Dr. Moss's required authorization, check status through an approved source, disable **only if still enabled**, record the actual actor/date/result **after execution**, and independently verify the outcome. If already disabled, document the observed state without inventing a past disable time. MFA does not end account authorization.
 
 
 <a id="answer-ex062"></a>
@@ -1858,13 +1858,13 @@ Model answers for EX001–EX074. Sofia Lindqvist, Mr. Tomasz Nowak, Eastgate Tra
 | Temporary role and personal account | Chapter 2 locum setup with additional factor | No invented identity or account number |
 | End-of-engagement and closure request | Last day passed; log identifies account to disable | Owner should confirm target and need |
 | Authorization | Dr. Moss's approved-account workflow | Actual closure instruction/approval as required |
-| Execution | **No dated completed disable entry** | True operator, action time and outcome **only when performed** |
-| Readback | **No approved technical state verification** | Check and record account state and any remaining access questions |
+| Execution | **No dated completed disable entry** and no status proving an operation is needed | If the approved status check finds the account **enabled**, complete the authorized disable and record the real operator, time and result; if already disabled, do not invent a prior operation |
+| Readback | **No approved technical state verification** | Verify and record the actual state after any change, including the limits of the approved check; do not claim a readback already happened |
 | Possible return | **No future assignment approved** | Fresh time-bounded authorization if another engagement arises |
 
-**Model response:** “The available change log does not establish that the locum account was disabled after the work ended; potential residual access must be verified and closed through the authorized workflow. If the account is still enabled, the proper administrator disables that account, records the real execution date and checks the resulting status. The additional authentication factor can protect sign-in, but does **not** end account authorization or disable the account.”
+**Model response:** “The available log establishes a **missing documented closure and readback**, not that the account is definitely enabled or disabled. Confirm the exact account and Dr. Moss's required approval; check the approved source of account state. **If enabled**, have the authorized actor disable it, write the actual execution date and result only afterward, and verify the resulting state independently. **If already disabled**, record that observation without fabricating a prior disable receipt. MFA strengthens authentication but neither renews work authorization nor disables an account.”
 
-**Boundary:** The original rubric's concern is an unclosed leaver review task. Silence in the change log does not by itself prove backend enabled status, and the presence of MFA does not prove backend disabled status. Do not fabricate an action, date, sign-in, identity, revocation, readback or incident. A later work assignment would require a fresh Dr. Moss approval, not automatic continuation. Full credit includes request, authorization, execution and independently checked outcome as **separate states**.
+**Boundary and grading:** The corrected 0–3 rubric rewards accurately naming the **documentation gap**, required owner confirmation and current-state check, **conditional** execution only when appropriate, truthful recording afterward and independent readback. These are **steps to specify**, not steps whose completion the learner must falsely assert. A missing log line proves neither enabled nor disabled backend state, and MFA is not account deactivation. Do not invent an actor, date, action, readback, sign-in, incident or return. A future assignment would need a new Dr. Moss decision; a new account versus specifically approved reactivation is system- and policy-dependent, not determined in the fictional file.
 
 
 **EX063.** Call the wholesaler on the number the clinic already held. Ignore the number printed in the new email. The second person approves only after that call. Last month's stopped attempt does not waive the rule.
