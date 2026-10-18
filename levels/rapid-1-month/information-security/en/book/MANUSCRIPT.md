@@ -1695,13 +1695,78 @@ Staff ask where the notes are. If nobody can show them in the practice system or
 
 > **Synthetic case.** No animal, client, or dose is on this tablet in the exercise. Do not invent one.
 
+
+### 15.3 Separate a missing asset from the evidence needed to erase it
+
+**Remote wipe** is a device-management operation intended to remove data or reset a managed device. It can reduce exposure if a lost device is accessed by an unauthorized person, but it may also destroy information that has **no verified copy elsewhere**. **Device status**, **data-copy status**, **authorization**, and **command execution** are four different questions. An absent tablet at closing establishes only the classroom observation that the device is **not in its expected room**. It does not establish theft, physical location, access by another person, a successful wipe, or loss of actual veterinary records.
+
+The fictional Hollybank incident card identifies a **lost tablet** as a condition calling for a response. The correct initial action for an **unlocated** tablet is to report it promptly under the card and have the responsible people establish its status. The card's call order is **Sofia → Dr. Moss → technician**. There is no permission in this lesson to jump from “not found at closing” to “wipe executed” or to label a cybersecurity compromise as confirmed. Reporting and protecting the device are meaningful actions even when the question of loss or theft remains open.
+
+A **verified off-device copy** means a specifically relevant set of notes is shown to be available outside the missing tablet, under the permitted source and within the necessary scope. A person remembering that the notes usually sync is not a verified copy. A backup service advertising retention is not a receipt for **today's afternoon notes**. The story allows two possible evidentiary sources: an appropriately checked record in the **practice system** or notes on **today's paper appointment sheet**. Whether either actually contains the relevant afternoon entries is **not stated**; the learner must leave that check unresolved.
+
+[NIST SP 800-124 Rev. 2, *Guidelines for Managing the Security of Mobile Devices in the Enterprise*](https://csrc.nist.gov/pubs/sp/800/124/r2/final) addresses enterprise mobile-device management, protections, deployment and device lifecycle considerations. [NIST SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) addresses coordinated incident-response considerations and evidence-based decisions. These are general technical references; neither publication directs a real veterinary clinic to wait for a particular medical note before a wipe or establishes that Hollybank has deployed device management, monitoring, or any actual response action. **The call order and decision authority are fictional course rules**, not a claimed NIST-prescribed protocol.
+
+### 15.4 Mechanism: preserve two competing security objectives
+
+There are two possible adverse outcomes, and both matter. **Confidentiality risk:** if an uncontrolled tablet contains accessible sensitive information, delayed containment could prolong exposure. **Availability and integrity risk:** if the tablet holds the only usable afternoon notes, a destructive wipe could eliminate the sole contemporaneous record, making later reconstruction unreliable. The case provides no actual probability or severity ranking for either. It is therefore inappropriate to say the danger is zero, to declare a theft, or to assume a copy exists without inspecting an authorized source.
+
+The appropriate evidence ledger is conditional rather than optimistic:
+
+| Checkpoint | Evidence supplied in the synthetic case | Decision boundary |
+|---|---|---|
+| Tablet presence | One tablet is absent from its expected room at closing | Start the **Sofia → Dr. Moss → technician** reporting chain; do not assert theft or tracking results |
+| Tablet protection | Consulting-room tablets were described as having a passcode and remote-wipe capability | Capability **does not prove** the device is reachable, the command was sent, or data was erased |
+| Afternoon notes in the practice system | **Not checked or shown** in EX069 | Do not mark system copy confirmed based on routine assumptions |
+| Afternoon notes on today's paper | **Not checked or shown** in EX069 | Do not mark paper copy confirmed based on the existence of a paper fallback |
+| Only-copy possibility | The afternoon notes **might** exist solely on the tablet | Hold an irreversible wipe pending responsible review of the available facts |
+| Wipe authorization and execution | **No Dr. Moss final decision or command receipt supplied** | No approval, wipe, acknowledgment, completion or location may be recorded as fact |
+
+The table is an instructional **decision worksheet**, not a mobile-device console report. A passcode may reduce casual exposure but does not establish the device was secured in a specific real-world event. A remote-wipe feature may exist even when no communication or execution acknowledgment is possible; a sent command, if one ever exists, would still have to be distinguished from an observed completed erase.
+
+### 15.5 Work the two contrasting branches without inventing their outcome
+
+**Branch A — off-device copy actually verified (hypothetical).** Suppose an authorized reviewer later *shows* that today's relevant notes are accessible in the practice system or on the day's paper. The evidence should identify **which source**, **which relevant interval**, **what content was compared**, **who checked it**, and the limitations of the check. Then the authorized decision-maker could weigh remote wipe against any remaining uncertainties. A verified copy would reduce the unique-copy concern, but **would not itself authorize or prove a wipe**. No such source inspection occurs in the supplied exercise.
+
+**Branch B — notes shown only on the missing tablet (hypothetical).** If the responsible staff actually established that the notes exist nowhere else, wiping would risk destroying the only copy. The case rule requires **Dr. Moss to decide after the fact is reported and recorded**, with technical advice from the technician. This does not mean an employee must retrieve an unsafe device, guess a location, or delay all other protective actions. It means the decision about this **destructive** control requires truthful knowledge of the data state. The scenario does **not** establish that this branch is true.
+
+**Actual checkpoint — no notes inspected.** EX069 says nobody has checked the practice system or today's paper. Both outcomes above remain counterfactuals. The correct current action is to report the absent tablet in card order, record the unresolved data-copy question, **hold the remote wipe**, and let Dr. Moss consider the decision when material evidence is available. The course does not instruct the learner to locate, remotely access, recover, or wipe any real device.
+
+| Tempting sentence | Why it is unsupported | Safe replacement |
+|---|---|---|
+| “A tablet is missing, therefore it was stolen.” | Absence from a room does not establish theft | “Tablet not found at the expected location; status needs confirmation.” |
+| “The notes surely synced.” | No verified copy of the afternoon notes | “Off-device note availability not checked.” |
+| “Remote wipe is enabled, so it already happened.” | Configuration is not an issued or completed command | “Capability reported; no execution evidence.” |
+| “Do nothing until it is found.” | Holding wipe does not cancel escalation or protective review | “Notify Sofia, then Dr. Moss, then technician; document status and choices.” |
+| “A visible afternoon note proves every field matches.” | A partial or stale copy might omit relevant material | “Verify the actual relevant content and limits of the off-device record.” |
+
+### 15.6 Evidence-aware decision record and escalation
+
+A reviewable note should separate **observation**, **source check**, **owner decision**, **technical operation**, and **readback**. The initial note can state that the tablet is absent, the reporting sequence was requested by the card, and the off-device copy has **not been verified**. It must not supply an imaginary time, observer name, message, audit event, device location, medical note or conclusion about theft. After a real review, each subsequent field would be filled only on evidence: whether an authorized practice-system or paper source contains the required notes, Dr. Moss's decision and rationale, the technician's separately recorded action if authorized, and the actual acknowledgment or limitations of verification.
+
+**Original classroom record, not a completed operation:** “Consulting-room tablet not at expected location at closing; today's afternoon-note copy in practice system or on paper **not yet checked**. Follow incident-card escalation **Sofia → Dr. Moss → technician**. Remote wipe **held pending review**; no location, theft, verified off-device copy, authorization, or executed wipe established.” This is a model learner decision from the given premises rather than a claim that anyone has performed a new investigation.
+
+[NIST SP 800-53 Rev. 5, AU-3 (Content of Audit Records)](https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final) discusses representing relevant event types, times, sources and outcomes in audit records. The classroom's note fields are an **original evidence-organizing exercise**, not a claim the clinic generated a compliant audit log or that any wipe was logged. Nothing here establishes a medical documentation rule or legal retention obligation.
+
+### 15.7 Negative controls, limitation and EX069 practice
+
+**Negative control A — passcode equals safety.** The existence of a passcode is not a verified loss outcome or evidence that notes are backed up. **Negative control B — green backup status.** A provider's normal backup service or a dashboard icon does not verify this afternoon's tablet-only notes. **Negative control C — a declared theft.** The story says absent at closing, not stolen or tracked. **Negative control D — an unverified command.** A hypothetical queued wipe is not a confirmed erase. **Negative control E — ignore the missing device.** Deferring one destructive operation does not remove the requirement for escalation and defensible protective choices.
+
+Answer EX069 independently before consulting [its worked answer](#worked-results). Construct a five-row decision table with **observation**, **call order**, **note-copy check**, **Dr. Moss decision**, and **wipe execution/readback**. Mark fields **not supplied** where the exercise provides no result. In your answer, distinguish the actual “not checked” state from a hypothetical copy in the practice system, a hypothetical paper copy, and a hypothetical only-device copy. State what would authorize each subsequent decision without declaring that it happened. No real device, animal, patient, dose, tracking or wipe is introduced.
+
 ### Errors and limits
 
-Holding a wipe is not a decision to ignore a lost device. The card still makes it an incident once it is reported as lost. This chapter does not estimate how far the tablet travelled, and it does not publish a tracking result.
+Holding a wipe is **not** ignoring an unlocated tablet: the incident card still triggers prompt reporting and assessment in the stated order. The card names a **confirmed lost device** among possible incident conditions; a tablet merely absent from its room at closing has not yet been proven stolen, lost beyond recovery, compromised, or subject to an issued wipe. This chapter supplies no tracking result, verified note copy, final incident classification or destruction of data.
 
 ### Apply
 
-- **EX069 — Wipe or wait?** A consulting-room tablet is missing at closing. Afternoon notes might exist only on it. Nobody has checked the practice system or the day's paper. What is the call order, and why is the wipe held? *Rubric:* 3 = call Sofia, then Dr. Moss, then the technician; hold the wipe until someone shows that today's notes exist off the tablet; if they exist only on the device, Dr. Moss decides after that fact is logged;; 2 = the call order and the hold;; 1 = one of those;; 0 = none.
+- **EX069 — Wipe or wait?**
+  - **Objective:** Balance confidentiality of a missing tablet with availability/integrity of potentially unique afternoon notes, preserving the incident-card escalation and truthful evidence status.
+  - **Inputs:** A consulting-room tablet is absent at closing. The afternoon notes **might** exist only on it; nobody has checked the practice system or today's paper. The incident card specifies **Sofia → Dr. Moss → technician**.
+  - **Restrictions:** Do not assert theft, device location, notes actually copied, medical content, wipe approval, issued command or successful erase. Do not retrieve or operate a real device; distinguish a missing asset from a confirmed loss.
+  - **Task:** Identify the first report/call order, what exact off-device sources must be checked before a destructive operation, why the wipe is held while unique-copy status is unknown, and who evaluates a confirmed only-device branch after a truthful report.
+  - **Expected evidence:** A five-stage evidence ledger (presence, notifications, off-device note copies, Dr. Moss decision, possible wipe/result), with all unobserved states explicitly **not supplied**.
+  - **Rubric (0–3):** **3** = preserves call order, holds wipe while the practice-system/day-paper copies are **unverified**, distinguishes a shown relevant copy from an assumption, submits any proved only-device condition to Dr. Moss after logging it, and invents no theft or execution; **2** = maintains correct call order and hold with the copy-check requirement but omits explicit evidence limits or decision ownership; **1** = states only the hold or only the call order without reasoning about sole-copy risk; **0** = orders an immediate wipe, fabricates checked copies/theft/execution, or provides no evidence-based decision.
+  - **Worked answer:** [EX069 — Worked results](#worked-results).
 
 <!-- open-cyber-academy:chapter-navigation:start ch-15 -->
 ### Continue studying — lesson 15 (chapter 15 of 20)
@@ -1740,13 +1805,82 @@ This chapter does not move the phone-back rule, and it does not add the receptio
 
 > **Synthetic case.** No supplier account number is written in the log line described here.
 
+
+### 16.3 Four roles can exist in one workflow without sharing permissions
+
+An **independent verifier** performs an agreed source check—for example, a phone-back using a supplier number **held before the new bank-detail email**. A **second approver** makes the separate business decision after the necessary verification. A **log writer** has authority to enter an accountable change record. An **executor** performs the actual authorized account-detail change, if one is approved. The same person might hold more than one role in an organization's real process, but **one role does not automatically confer the others**, and an action record is not a substitute for approval or execution evidence.
+
+Hollybank's synthetic ground rule is specific: **only Sofia and Dr. Moss may write its change log**. The receptionist in EX070 is described as having **completed a phone-back**, but the exercise does not supply the supplier's actual answer, the source telephone digits, a second-person approval, a bank-detail modification or a resulting payment. The phone-back fact is a **scenario premise**, not permission to manufacture its details. The receptionist's sensible desire to report immediately is addressed through **same-day verbal reporting** to Sofia or Dr. Moss, not by granting temporary log access.
+
+[The NIST SP 800-53 Rev. 5, AC-6 (Least Privilege)](https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final) addresses restricting privileges to those necessary for assigned tasks. Its **AU-3 (Content of Audit Records)** concerns recording enough context to understand what happened, when, from which source and with what outcome. These principles inform the distinction between actor, approver and authorized recorder; the exact **two-writer limit** is a fictional Hollybank rule, not a NIST requirement. The publication does not establish that the clinic implemented a particular audit system.
+
+### 16.4 Mechanism: a phone-back outcome is not a bank-change approval
+
+The Chapter 9 rule remains intact: for a change in supplier bank details, the clinic uses a **known number already held**, then has a **second person approve only after** that independent verification. A completed phone-back and an approved change are **different stages**. A note saying “the receptionist checked” does not prove the supplier approved new bank details, that the second person authorized a change, or that any payment happened. A well-structured record would preserve the separations:
+
+| Stage and authority | What is known in EX070 | What would require additional evidence |
+|---|---|---|
+| **Phone-back performed** | The receptionist completed a call under the exercise premise | Supplier identity/contact-source and exact result; do not invent the response |
+| **Second business approval** | **Not supplied** | A designated second person's authorization **after** a sufficient held-number verification |
+| **Change-log recording** | Sofia and Dr. Moss are **the only two permitted writers** | One of them documenting the actual report's date, reason, verified result and unresolved gaps |
+| **Bank-detail execution** | **Not supplied** | Approved action, responsible executor, real modification and its scope |
+| **Execution readback** | **Not supplied** | Checked actual resulting state and limitations of the evidence |
+
+The recorder should not retroactively convert the receptionist into an approver by writing “approved,” nor state “bank details updated” merely because someone reported the call. Where the precise phone-back response or approval status is not available to the author of the change-log line, the entry should say **reported / verification details pending** rather than make up a positive result. A report may be complete as a report while the underlying change decision remains unresolved.
+
+### 16.5 A worked same-day handoff, not a new approval
+
+**Actual supplied facts:** The receptionist says a phone-back has taken place and asks for write access because Sofia is with a client. The change log has **two authorized writers: Sofia and Dr. Moss**. She can tell one of them on the **same day** what happened, including which wholesaler was involved, that a previously held number was used as stipulated by the original rule, and what the supplier said **if that information is actually known to her**. The chapter does not provide the words or decision from the real call.
+
+**Correct decision:** Refuse a third writer, including access “just for this afternoon.” If Sofia is unavailable, report to Dr. Moss, the other authorized writer, without guessing a timestamp or retroactively assigning her an approval. One of the two may then write the actual **date, reason for the check/change request, reported outcome, source limitation and action status**, distinguishing “supplier confirmation” from “second approval” and “bank details changed.” The record can reflect **no decision yet** if approval or execution is unobserved.
+
+| Offered shortcut | Problem | Safe decision |
+|---|---|---|
+| “I called, so I should type my own log entry.” | Verification task does not grant log-write privilege | Report verbally **the same day** to Sofia or Dr. Moss |
+| “Give me editor access until closing.” | Temporary third writer violates the exact two-writer rule | **Refuse**, without inventing an emergency exception |
+| “Sofia is busy; the process must stop until tomorrow.” | Dr. Moss is also an authorized writer | Report promptly to **Dr. Moss** if needed |
+| “Sofia logged a call, so the bank change is approved.” | Source check and later approval are independent | Require evidence of a distinct approval before any change |
+| “The call happened; therefore the transfer was made.” | No execution or readback evidence | Do not assert an account update or payment |
+| “Write the outcome as confirmed even though nobody recorded what was said.” | Fabricates content and overstates the check | Record only observed/reportable facts and an explicit evidence gap |
+
+**Model same-day report, not a statement of a completed bank change:** “Phone-back **reported as completed** in the Hollybank scenario; previously held supplier contact path is the required method. Exact supplier answer and second approval are **not supplied in the exercise**. Authorized log writer Sofia or Dr. Moss should document the actual dated report, purpose and attributable result when available. No bank details or payment are reported changed.” The note does not invent the name of the receptionist, actual telephone digits or a completed approval.
+
+### 16.6 Make each record field falsifiable
+
+A reviewer should be able to distinguish **when the receptionist reports the check**, **when the call actually occurred if evidenced**, **who recorded the log line**, and **what the approving and executing authorities later decided**, if anything. Those times can differ; a record created today must not fabricate an earlier call timestamp or retroactively authorize a change.
+
+| Record field | What to collect in an authorized real workflow | What this fictional lesson supplies |
+|---|---|---|
+| Actual report date and responsible writer | Today as actually known, written by Sofia or Dr. Moss | **Writer roles specified; no dated newly created entry** |
+| Change request and business reason | Supplier, issue and reason for the phone-back | Bank-detail-check context, without identifiers or bank digits |
+| Independent telephone source | Pre-existing trusted wholesaler contact reference | Method prescribed by Chapter 9; no source number printed |
+| Phone-back result | Actual supplier statement, confidence and any inconsistency | Call completion stipulated; **outcome absent** |
+| Second-person approval | Name/role, decision and supporting verification reference | **No approval result supplied** |
+| Execution and readback | Whether an authorized modification was performed and verified | **No change or receipt supplied** |
+| Exceptions / open questions | Facts pending verification, confidentiality/retention requirements as applicable | Unknowns should remain explicitly unfilled |
+
+The **minimal audit principle** is not “collect everything indiscriminately,” but keep enough context to prevent a later reader confusing the **report** with a **decision** or the **decision** with an **executed change**. Hollybank's story supplies no real change-log implementation or statutory retention rule.
+
+### 16.7 Negative controls, limits and EX070 practice
+
+**Negative control A — temporary editing permission.** A third writer for ten minutes remains a third writer. **Negative control B — verbal-only as an excuse for no log.** The report can be delivered verbally, but **an authorized writer** should document the actual evidence, with date/reason/result or an explicit pending status. **Negative control C — call equals approval.** A phone-back could be verified yet a separate second approval remain absent. **Negative control D — an immaculate log equals execution.** Documentation is not evidence the bank record changed, absent a reliable result. **Negative control E — a busy approver.** Sofia's unavailability does not grant write access to the receptionist or eliminate Dr. Moss's permitted role.
+
+Complete EX070 independently in a four-part response: **who verifies**, **who approves**, **who writes**, and **what has actually been executed**. Then construct a role-and-evidence ledger with date, reason, call source, result, second approval, execution and readback, marking each absent field **not supplied**. Explain why a same-day report preserves useful information without allowing an unauthorized writer to edit the log. Compare with [the EX070 worked answer](#worked-results). No extra writer, observed approval, account number or actual bank change exists in this exercise.
+
 ### Errors and limits
 
 Two writers do not mean two optional witnesses for a bank change. The phone-back rule's second person still approves only after the call to the number the clinic already held. That approval is a different role from typing the log.
 
 ### Apply
 
-- **EX070 — Who types the outcome?** A receptionist completed a phone-back and offers to enter it in the change log because Sofia is with a client. Who may write, and what must the line contain? *Rubric:* 3 = the receptionist reports the same day and does not receive access; Sofia or Dr. Moss writes; the line has the date and the reason;; 2 = no third writer, and the date is required;; 1 = one of those;; 0 = none.
+- **EX070 — Who types the outcome?**
+  - **Objective:** Distinguish the phone-back verifier, second approver, change-log writer and eventual executor, while honoring Hollybank's two-writer rule.
+  - **Inputs:** A receptionist has completed a phone-back and offers to write the result because Sofia is busy. **Only Sofia and Dr. Moss** may enter change-log lines. Chapter 9 requires a second-person decision **after** a valid held-number call.
+  - **Restrictions:** Do not grant temporary log access to a third person, invent a supplier response, an approval, a changed bank account, payment or readback. Preserve same-day reporting and record only actual facts.
+  - **Task:** State who reports and who may write; explain when second approval could occur; specify minimum truthful record fields (actual date, reason, source of check, known result or unresolved status, approval/execution status) without fabricating them.
+  - **Expected evidence:** A role/evidence matrix and a model same-day handoff clearly separating completed **phone-back premise** from unobserved supplier response, approval, execution and readback.
+  - **Rubric (0–3):** **3** = rejects any third writer, reports verbally to Sofia or Dr. Moss the same day, preserves the distinct second-approval gate after held-number verification, specifies actual date/reason/result and unresolved states for an authorized writer, and makes no false execution claim; **2** = preserves two writers and same-day report with dated recording but omits either approval separation or result/evidence status; **1** = names at least one legitimate writer or rejects temporary access without a workable record/role distinction; **0** = grants receptionist write access, treats phone-back as approval/payment, fabricates evidence, or supplies no valid control.
+  - **Worked answer:** [EX070 — Worked results](#worked-results).
 
 <!-- open-cyber-academy:chapter-navigation:start ch-16 -->
 ### Continue studying — lesson 16 (chapter 16 of 20)
@@ -2246,7 +2380,39 @@ Model answers for EX001–EX074. Sofia Lindqvist, Mr. Tomasz Nowak, Eastgate Tra
 
 **EX069.** Call Sofia, then Dr. Moss, then the technician. Hold the wipe until today's notes are shown in the practice system or on the day's paper. If they exist only on the tablet, Dr. Moss decides after that fact is logged. No wipe is sent by this answer.
 
+
+**Expanded worked decision — EX069: missing tablet and possible only-copy notes.**
+
+| Step | Evidence supplied | Appropriate disposition |
+|---|---|---|
+| **1. Asset observation** | Tablet absent from the consulting room at closing | Report as **not located at expected place**; do not call it stolen or remotely tracked |
+| **2. Incident-card contacts** | **Sofia → Dr. Moss → technician** is the stated order | Follow that order for escalation and coordinated review |
+| **3. Afternoon-note copy check** | The practice system and today's paper have **not been checked** | Neither off-device copy is verified; do not assume notes synced or are absent |
+| **4. Owner assessment** | No Dr. Moss wipe authorization; only-device status remains possible | Hold destructive wipe. If an actual check later establishes a unique on-tablet copy, report it truthfully for **Dr. Moss's decision** |
+| **5. Device operation/readback** | The tablet has remote-wipe capability; **no command or outcome supplied** | Do not claim queued, issued, acknowledged or completed wipe |
+
+**Worked reasoning:** A device missing from its expected room is a cause for prompt protective attention, **not proof of theft**. Remote wipe may protect confidential information but may also erase the only contemporaneous afternoon notes. The initial case offers no verified off-device copy, so the worker **does not execute or recommend an immediate wipe**. Follow the stated call order; seek reliable evidence from the practice system or today's paper about the **relevant** notes. A genuine source comparison, if one occurs, should record what content is available and any limitation rather than accepting someone's recollection that it usually syncs. If an authorized review confirms notes exist *only* on the tablet, Dr. Moss must decide after that fact is logged; if a correct off-device copy is verified, wipe could be considered through the authorized decision process but is still **not automatically executed**. Neither branch is observed.
+
+**Counterexamples:** “Passcode is enabled” is not a verified copy. “The tablet is stolen” is unsupported. “The wipe command can be sent” is not an execution receipt, and “we held wipe” does not mean the incident-card contacts should be ignored. Full credit requires the confidentiality-versus-availability tradeoff, accurate source status, call order, conditional Dr. Moss decision and no invented tablet location, clinical record or outcome.
+
+
 **EX070.** The receptionist does not receive log access. She tells Sofia or Dr. Moss the same day. One of those two writes the line, with the date and the reason.
+
+
+**Expanded worked record — EX070: verifier, approver, writer and executor.**
+
+| Role or stage | What is known | What the decision permits |
+|---|---|---|
+| **Verifier / receptionist** | EX070 stipulates a completed phone-back; no exact wholesaler reply is reproduced | Give a **same-day verbal report**, including what was actually said when known; no editor privilege follows |
+| **Second approver** | Chapter 9 requires a separate approval **after** independent verification | No approval may be inferred simply from the call; the exercise supplies **none** |
+| **Authorized change-log writer** | **Only Sofia and Dr. Moss** may write the log | One of them records the actual date, purpose/reason, reported verification source and actual result/unknown status |
+| **Bank-detail executor** | No authorized modification is supplied | Do not assert account numbers changed or money moved |
+| **Readback/reviewer** | No verified resulting account or payment state supplied | Leave execution and confirmation **not observed** |
+
+**Core answer:** The receptionist **must not** receive temporary or permanent write access to Hollybank's change log. Because Sofia is busy, the receptionist can tell **Dr. Moss the same day** (or Sofia when available that day), accurately reporting the wholesaler, pre-existing held-number method and supplier response **only if actually known**. Sofia or Dr. Moss writes an attributed log line with the **real date, reason, source and verified/reportable outcome**, marking missing fields or a pending bank-change decision explicitly. A valid phone-back is **not** the second approval: that decision must separately occur **after** independent verification under Chapter 9. Writing the line is also not evidence that a bank-detail change or payment was executed.
+
+**Counterexamples:** A ten-minute permission for a receptionist would still create a prohibited **third writer**. An authorized log writer may document a pending outcome but should not invent the supplier's answer. A second-person signature without verified phone-back is premature; a completed phone-back without later approval is not permission to update bank details. Full credit preserves all four role boundaries, same-day reporting, truthful dating and the absence of any new approval, transaction or readback.
+
 
 **EX071.** Hold the Friday shutdown of every remaining link, including marketing, until Dr. Moss writes a new agreement. The earlier page does not cover that proposal. Do not invent a new open-file total.
 
