@@ -1248,13 +1248,71 @@ The next month's line names the copy, the date, the person who watched, and whet
 
 > **Synthetic case.** The next month's result is not invented. The blank stays blank.
 
+
+### 11.3 Scope and proof: historical restores are not monthly results
+
+A **backup** is a retained copy intended for recovery. A **restore attempt** uses a specified backup, item and destination. A **restore verification** checks whether the intended data actually returned and can be used according to an explicit criterion. A planned test and an observed result are different evidence. An earlier success belongs to its original test window, not a later month's blank routine row.
+
+Hollybank's synthetic record distinguishes two backup scopes. The practice-system provider was described as keeping daily copies for **thirty days** and offering practice-system recovery within a day. Those statements did **not** cover the clinic's separate email and shared files. Sofia added an independent backup for **email and files**, then had its recovery tested in an isolated **test area**. A folder returned in minutes; the first mailbox test failed because the first full copy had not completed; a subsequent mailbox test succeeded one week later. The change log retains both failed and successful mailbox observations. None is a result from the **next calendar month**.
+
+[NIST SP 800-34 Rev. 1, Contingency Planning Guide for Federal Information Systems](https://csrc.nist.gov/pubs/sp/800/34/r1/upd1/final), published in 2010, gives general guidance on contingency planning and testing. Its recovery-test concepts are applied as original classroom reasoning, not as proof that Hollybank has an approved federal contingency plan or satisfies a particular recovery requirement.
+
+| Source or test | Supported historical claim | Unsupported next step |
+|---|---|---|
+| Provider's thirty-day daily practice-system backups | A scoped **provider promise**, not an email test | Treating them as a validated mailbox backup |
+| Separate backup: folder test in test area | The named folder restored in minutes | All files or the live mailbox were recovered |
+| Separate backup: first mailbox attempt | Restore **failed** while first full copy was incomplete | Erasing the earlier failure after later success |
+| Separate backup: second mailbox attempt a week later | The specified mailbox restore **succeeded** in that older exercise | Filling the future month's restore row with an old pass |
+| New monthly routine row | The test is **planned**; no new attempt or result was released | Reporting a pass, failure, observed date or actual recovery time |
+
+### 11.4 What a defensible future test record would need
+
+For a future **authorized** sample test, the owner would first select the appropriate copy, item and expected outcome. Restore the named sample into a **test area separate from the live mailbox**, not over production mail. Recording only a dashboard success icon or a destination folder name would be insufficient: the learner should check that the intended sample is present, readable and consistent with the known reference or explicitly record what integrity could not be verified.
+
+A dated record would identify **which backup and sample**, **test time**, **observer or responsible tester**, **isolated destination**, **result (pass, fail or inconclusive)**, **content/integrity checks**, and **limitations or follow-up**. When those values have not been observed, the future monthly row stays blank. This chapter supplies no such attempt, person, date, checksum, email content, measured recovery objective or technical readback for next month. A hypothetical acceptance checklist is **not** a completed test.
+
+| Future evidence field | Why it matters | New month's actual status |
+|---|---|---|
+| Backup source and intended sample | Separates practice system from email/files and bounds what was tested | Not selected or observed |
+| Test date and responsible observer | Gives accountability and separates calendar periods | Not supplied |
+| Destination | Prevents replacing live email while testing | **Test area required**, no future execution |
+| Restored data and integrity check | Distinguishes real recovered contents from a green icon | No observation |
+| Recorded result and limitations | Preserves failure, inconclusive status or bounded success accurately | **Blank; not a pass or fail** |
+
+The isolated restore is a **proposed future verification**, not permission to overwrite the live mailbox. Even a completed sample pass would prove only the defined sample and conditions, not the organization's entire recovery capability or every possible point-in-time restore.
+
+### 11.5 Worked contrast and negative controls
+
+**Worked decision.** A colleague copies last week's mailbox success into the new monthly row. That entry would imply an event in a calendar period where no event has been documented. Keep the prior failure and success on their own lines, leave the next month's result empty and propose a test-area attempt only when separately authorized. Do not substitute the provider's thirty-day practice-system retention for the email-and-files copy.
+
+**Counterexample A:** A full backup's icon looks healthy but the sample cannot be restored: scheduling or dashboard state is not data-recovery evidence. The earlier mailbox failure illustrates why this distinction matters, without establishing a new failure now.
+
+**Counterexample B:** A successful folder restore is not evidence about mailbox content. An item-by-item scope must remain attached to each result.
+
+**Counterexample C:** A restore succeeds last week but next month's test has not happened. Its date and observer cannot be copied into another period.
+
+**Counterexample D:** Restoring onto the live mailbox could replace or disrupt current messages. Such a test is outside the safe exercise; use the isolated area and retain the original source and test log.
+
+### 11.6 Independent practice before EX065 worked result
+
+Answer EX065 independently: identify the historical failed mailbox test, the later successful mailbox test, the bounded folder result, and the distinct scope of the provider's practice-system backup. State why the new month's line stays **blank**. Then fill a **planned-test schema** with backup source, sample, nonproduction destination, observer, date, integrity check, observed result and limitations; mark unsupported fields **not supplied** rather than inventing a pass. Explain why a missing result is not a failed test, and why an old result cannot satisfy a new period.
+
+The worked explanation appears under EX065 in the [Worked results appendix](#worked-results). No future test, restore into production, new backup, clinical event or legal retention rule is created by this exercise.
+
 ### Errors and limits
 
 Filling the line does not rerun the sharing count, and it does not print the client list from Chapter 10. A green dashboard glyph was already rejected in Chapter 4 as a substitute for a restore. This chapter does not repeat that test.
 
 ### Apply
 
-- **EX065 — Whose month is the success?** The log shows a failed mailbox restore and a successful one a week later, both during the course. The next calendar month has started. The routine sheet has an empty restore row. May last week's success fill it, and where must the next attempt land? *Rubric:* 3 = last week's success stays in that week; the new row stays empty until its own dated result; the attempt lands in a test area, not on the live mailbox;; 2 = keep the row empty and name the test area;; 1 = one of those;; 0 = none.
+- **EX065 — Whose month is the success?**
+  - **Objective:** Separate historical restore outcomes from a future monthly test, and distinguish clinical-system backup scope from separate email/files recovery.
+  - **Inputs:** The synthetic log records an earlier failed mailbox attempt before the first full copy completed, a folder restored to a test area, a mailbox restored successfully one week after the failed attempt, and an **empty** next-month restore row. The provider's daily thirty-day copies concern the practice system.
+  - **Restrictions:** Do not fill an unobserved month, claim a real date/observer/checksum, restore over the live mailbox, or treat the practice-system provider copies as an email backup.
+  - **Task:** Identify which results remain in their original window, whether next month's row can be ticked, what backup source covers mail, and how a future isolated test would be checked and documented.
+  - **Expected evidence:** An evidence table recording backup scope, historical attempt/result, next-month blank, sample/destination/date/observer/content verification and limitations—with unobserved fields labeled **not supplied**.
+  - **Rubric (0–3):** **3** = preserves the earlier failure, folder success and later mailbox success at their original scope/time; keeps the new row blank; distinguishes provider practice-system from separate email/files backup; requires a test-area restore and actual dated, attributed integrity/result evidence before a pass; **2** = keeps the new row blank, identifies test-area isolation and old-versus-new outcome but misses the different backup scope or verification detail; **1** = identifies only one correct boundary, such as not copying the old success or not using live email; **0** = fabricates next-month results, treats practice-system retention as proved email recovery, proposes overwriting live mail, or lacks defensible reasoning.
+  - **Worked solution:** [EX065 in the final appendix](#worked-results).
 
 <!-- open-cyber-academy:chapter-navigation:start ch-11 -->
 ### Continue studying — lesson 11 (chapter 11 of 20)
@@ -1293,13 +1351,73 @@ The opposite error is also refused. Absence of six rows does not show that those
 
 > **Synthetic case.** No new patch report is written by this lesson.
 
+
+### 12.3 Updates enabled, patches installed and fleet verified are different claims
+
+An **update setting** describes configuration allowing a machine to obtain updates. A **patch installation** is a specific update applied to a component. A **verification** checks that the required patch state is actually present, potentially including version and restart status. A **patch census** is a dated set of results for a defined population, measured against an explicit baseline and accompanied by known coverage gaps or approved exceptions. Neither the setting change nor a device-count denominator is a complete patch-level result.
+
+The synthetic Hollybank inventory says there are **nine computers and two tablets**. A printer compatibility issue had led to updates being switched off on **three computers**. The technician installed a newer printer driver and **switched updates back on for those three**. That is the recorded corrective action. The narrative supplies **no actual patch versions, nine-machine scan, installation readbacks, exception approvals or patch status rows for the other six**. It does not even supply patch-level verification for the three affected computers.
+
+[NIST SP 800-40 Rev. 4, Guide to Enterprise Patch Management Planning](https://csrc.nist.gov/pubs/sp/800/40/r4/final), published in April 2022, explains the enterprise patch lifecycle as **identifying, prioritizing, acquiring, installing and verifying** patches. This is a general technical reference for distinguishing stages, not evidence that fictional Hollybank passed a patch baseline or implemented an enterprise compliance program.
+
+| Scope | Supplied evidence | What cannot be concluded |
+|---|---|---|
+| **Three affected computers** | Driver replaced; update settings switched on again | All patches installed or verified on those three |
+| **Nine computers** | Total population stated for a possible computer census | Nine separate patch-level observations or nine compliant devices |
+| **Other six computers** | No specific patch-state rows given | They are exposed, unpatched, fully compliant or verified |
+| **Two tablets** | Passcode and remote-wipe controls were discussed separately | Any computer's installed patch level |
+
+### 12.4 How a valid nine-computer denominator would be supported
+
+A future assessment would identify **nine distinct in-scope assets** by a consistent identifier and observation time. For each one, a qualified operator would need an authorized status source, operating-system and relevant application/firmware versions, required patch baseline, installation or restart status, current evidence of applicability, any owner-reviewed exceptions and a verification result. Devices absent from the assessment are **unmeasured**, not default failures or passes.
+
+This is a **proposed evidence schema**, not a fabricated nine-row report:
+
+| Required future field | Current case status |
+|---|---|
+| Nine unique computer identifiers and inventory cutoff | Population size known; no nine-row asset list supplied |
+| Date/source of status measurement | Not supplied |
+| Applicable patch baseline and installed versions | Not supplied |
+| Actual installation, restart and verification outcomes | Not supplied |
+| Scoped and approved exceptions | No present exception approved in the file |
+| Per-device disposition and coverage | Not supplied |
+
+The three repaired computers are a **change scope**, not a compliant numerator. The other six are not a measured vulnerable numerator. “Nine” is the stated population size for an eventual complete computer report; the separate two tablets are not silently substituted into this denominator. If the scope later includes tablets, that is a **different, explicitly defined population**.
+
+### 12.5 Worked report: one action, no invented census
+
+A colleague proposes: **“patch census: all nine computers fully patched.”** Nothing in the record shows nine patch-level passes. A source-faithful replacement is: **“The technician installed a newer printer driver and re-enabled updates on the three computers previously left with updates off. The current installed-patch status of all nine computers has not been verified by a dated nine-device assessment.”** This statement values the completed repair without expanding it into a fleet-wide measurement.
+
+**Contrasting outcomes:** A machine may have update settings on but still await installation or restart, so the switch is not an installation receipt. A machine with no row in the local note may be current or behind; neither follows from silence. The printer repair explains an earlier reason for disabling updates but does not create an automatically approved long-term exception. A missing ninth row in a later report would be a coverage gap, not evidence that the device was safe.
+
+**Negative control A:** Write “three of nine fully patched” because three switches were enabled. This is also unsupported: three is the number of affected machines, not verified patch passes.
+
+**Negative control B:** Mark all six without rows as exposed. A missing observation does not establish vulnerability.
+
+**Negative control C:** Mark all six as compliant based on the absence of complaints. No measured state supports that conclusion either.
+
+**Negative control D:** Count the tablets' passcodes and wipe controls as computer patch verification. The control and asset classes differ.
+
+### 12.6 Independent EX066 census design
+
+Before reading the worked EX066 answer, separate **change performed**, **population size**, **unmeasured devices**, **version and baseline checks**, and **final claim**. Draft an **empty template**, not an invented report, with unique asset ID, date, source, target baseline, observed installed version, exception, restart/verification and result. Explain why the three-machine correction cannot certify the nine and why lack of rows for the other six proves neither exposure nor compliance.
+
+Compare with EX066 in the [Worked results appendix](#worked-results). No scan, installation, vulnerability, patch version, device identifier or real Hollybank compliance determination is introduced.
+
 ### Errors and limits
 
 Switching updates on is not the same control as the tablets' passcode and remote wipe. This chapter does not choose a wipe, and it does not name which three computers.
 
 ### Apply
 
-- **EX066 — How wide is the sentence?** The change log says the three computers that had updates off now have them on, after the newer driver. A colleague writes "patch census: all nine computers fully patched." What is wrong with the width, and what do you refuse to infer about the other six? *Rubric:* 3 = the repair covers three machines; nine were not checked; do not call the six exposed merely because they lack rows;; 2 = reject the nine-machine census;; 1 = a vague doubt;; 0 = none.
+- **EX066 — How wide is the sentence?**
+  - **Objective:** Distinguish the three-computer update-setting repair from installed and verified patch status across nine computers.
+  - **Inputs:** Hollybank has nine computers and two separately protected tablets. A newer printer driver allowed updates to be re-enabled on three computers; no nine-device patch inventory or patch-level installation/readback is supplied.
+  - **Restrictions:** Do not invent per-device data, installed versions, scan results, patch exceptions, measured compliance, or a conclusion that missing six rows are unsafe or safe.
+  - **Task:** Replace “all nine computers fully patched” with the narrow observed remediation. State what the three and nine count and which inventory, dated source, baseline, exceptions, and verification evidence would be needed for a real census.
+  - **Expected evidence:** A three-computer bounded repair statement, an unfilled nine-computer review schema, and explicit uncertainty about the six missing rows and the three unverified patch levels.
+  - **Rubric (0–3):** **3** = describes only the three update switches as corrected, does not equate them to patch passes, refuses the nine-device census, makes neither exposure nor compliance claims for the six, and specifies asset/time/baseline/version/exception/verification fields; **2** = distinguishes three from nine and refuses unsupported claims about the six but omits detailed verification requirements; **1** = expresses doubt about the “fully patched” phrase without distinguishing setting change from observed patch status; **0** = fabricates census data, claims the six are exposed or compliant from silence, or makes no valid distinction.
+  - **Worked solution:** [EX066 in the final appendix](#worked-results).
 
 <!-- open-cyber-academy:chapter-navigation:start ch-12 -->
 ### Continue studying — lesson 12 (chapter 12 of 20)
@@ -1908,7 +2026,38 @@ Model answers for EX001–EX074. Sofia Lindqvist, Mr. Tomasz Nowak, Eastgate Tra
 
 **EX065.** Last week's successful restore stays in that week. The new month's row stays empty until that month has its own dated result. The next attempt is restored into a test area, not onto the live mailbox.
 
+
+**Expanded worked explanation — EX065.**
+
+| Historical or future item | Source and time window | Defensible disposition |
+|---|---|---|
+| First mailbox restore | Separate email-and-files backup; initial full copy incomplete | **Failed** in that earlier attempt; retain the failure |
+| Folder restore | Separate backup; specified folder and isolated test area | **Succeeded for that folder only**, not universal recovery |
+| Second mailbox restore | Same separate backup family, one week after the first failure | **Succeeded at that earlier checkpoint**; not a new-month result |
+| Provider's thirty-day daily copies | Clinical practice-management system | Different recovery scope, no evidence of mailbox recovery |
+| Next month's monthly row | A future routine with **no observed attempt** | **Blank** until an authorized attempt is run, checked and recorded |
+
+**Step-by-step resolution:** Keep both the unsuccessful first mailbox attempt and successful later attempt with their actual earlier windows. Treat the folder success as only the recovered test folder. Do not transfer that success to the next month's row, which is **not tested**—a blank is neither success nor failure. If a new test is later approved, select the **separate email/files copy** for email/files, a defined sample and an **isolated test area**, not the live mailbox. Record actual test date and responsible observer, backup source, sample, result, a content/integrity check against an appropriate reference and limitations. None of those new observations is supplied, so no receipt or result can be asserted now.
+
+**Negative controls:** A green status indicator is not proof of recovered data; a provider's thirty-day practice-system retention does not cover a separate mailbox; a successful older test cannot fill a later month; restoring into production is an unnecessary risk. No mailbox message, date, checksum, actual observer or new test success is invented. Credit requires chronology, distinct backup scopes, isolation and evidence-based disposition.
+
+
 **EX066.** The driver repair and the phrase "updates back on" cover the three computers that had been switched off. Nine machines were not checked, so "fully patched" is too wide. Missing rows do not show that the other six are exposed.
+
+
+**Expanded worked explanation — EX066.**
+
+| Quantity or claim | What the synthetic file supplies | What remains unproved |
+|---|---|---|
+| **Three repaired computers** | New driver installed and update settings re-enabled | Patches downloaded, installed, restarted or verified |
+| **Nine computers** | Stated fleet population | Nine individually checked patch-status records or full compliance |
+| **Other six computers** | No per-device patch data | Neither exposure nor compliance can be inferred |
+| **Two tablets** | Separate passcode and wipe controls | Patch state of the computers or tablets |
+
+**Worked resolution:** The documented change covers **three computers** previously configured with updates off. The technician installed a newer printer driver and enabled updates on those three; no patch level was checked in the evidence supplied. The clinic has **nine computers**, but that is a potential review denominator, not nine verified results. The missing six rows do **not** establish that those computers are vulnerable, updated, or compliant. A real nine-computer census would require a uniquely identified inventory and dated trusted source, applicable patch baseline, installed versions, approved exceptions, restart and verification results for every device. No such survey was observed.
+
+**Negative controls:** Re-enabling an update setting is not proof of a successful patch installation; the number three is not a compliant numerator; missing six observations are not six vulnerable computers; tablet wipe settings are not patch evidence. A source-faithful summary preserves the three-device repair and withholds claims about nine fully patched systems or a real Hollybank vulnerability finding.
+
 
 **EX067.** Refuse the borrowed session. The helper's clicks would be recorded as the nurse. A personal account, if needed, waits for Dr. Moss's approval in the change log before first use. This answer does not create the account.
 
