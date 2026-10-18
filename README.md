@@ -2,7 +2,9 @@
 
 **Learn cybersecurity through open lessons, worked examples and practice you can explain.** OpenCyber Academy is a free public learning library for cybersecurity, information security, privacy and digital defense. Read on the [study site](https://opencyber.academy/) or follow the same curriculum in this GitHub repository. Public reading does not require an account.
 
-[Start with a cybersecurity lesson](levels/rapid-1-month/cybersecurity/en/book/MANUSCRIPT.md#ch-01) · [Explore subjects](https://opencyber.academy/subjects/) · [Explore levels](https://opencyber.academy/levels/) · [Open the study site](https://opencyber.academy/)
+**Choose a language and open a published chapter:** [English — Cybersecurity foundations](levels/rapid-1-month/cybersecurity/en/book/MANUSCRIPT.md#ch-01) · [Português — Segurança da informação](levels/rapid-1-month/information-security/pt/book/MANUSCRIPT.md#ch-01) · [Español — Seguridad de la información](levels/rapid-1-month/information-security/es/book/MANUSCRIPT.md#ch-01)
+
+[Explore subjects](https://opencyber.academy/subjects/) · [Explore levels](https://opencyber.academy/levels/) · [Open the study site](https://opencyber.academy/) · [Share a lesson](https://opencyber.academy/share/)
 
 <a id="comece-por-aqui"></a>
 
