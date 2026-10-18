@@ -1025,6 +1025,65 @@ Paying because "we already know this trick" skips the call. Calling the number i
 
 > **Synthetic case.** No supplier bank account is printed here. Do not invent digits.
 
+
+### 9.3 A successful refusal is a historical result, not a permanent exemption
+
+A **payment-detail change request** asks an organization to replace previously trusted destination information with new instructions. The request is only an assertion by a sender until its origin and content have been verified. **Independent verification** means contacting the established supplier using a channel selected from a source the requester did not supply in the suspicious message. **Second approval** is a separate authorized person's decision made after sufficient verification, not a second person merely reading the same email. **Execution** is the subsequent authorized account-data change or payment action. **Readback** is a checked record of what actually happened after execution. A request, call, approval, change and receipt are not interchangeable evidence.
+
+The Hollybank narrative establishes that a prior fraudulent invoice-change attempt was **stopped** using a phone-back rule. EX063 presents a **new email requesting a wholesaler's bank-detail change and containing a telephone number**. The new request has not been verified; the exercise supplies no newly observed call outcome, changed digits, approved transaction, transfer or bank readback. The earlier stopped attempt demonstrates that the rule was used on one earlier occasion. It cannot authorize bypassing the same verification on the new request.
+
+The [NIST Cybersecurity Framework 2.0](https://doi.org/10.6028/NIST.CSWP.29) describes governance and protection outcomes, including defined roles and managed access. [NIST SP 800-53 Rev. 5, AC-3(2)](https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final) describes dual authorization for **organization-defined privileged actions**. Hollybank's phone-back and second-person business approval are **fictional case rules**, not a claim that AC-3(2) mandates this exact supplier-payment workflow or that the practice implements a certified control.
+
+### 9.4 Model the five evidence gates
+
+For a bank-detail request, the order matters. **The second approver cannot repair a missing independent supplier check simply by signing a form.** A check against a telephone number embedded in the new message is not independent because the requester selected that number.
+
+| Gate | Question and relevant evidence | Status for the new EX063 email | What must not be inferred |
+|---|---|---|---|
+| **1. Request received** | What change does the new email ask for, and where did the instruction originate? | A supplier-bank-detail change is requested; the email contains a callback number | That the claimed supplier actually sent it |
+| **2. Independent verification** | Was the known supplier contacted using a number Hollybank **already held** from a trusted bill or contract source? Was the specific change verified? | **Not performed in the exercise**; the method is specified | A call to the number in the email would prove authenticity |
+| **3. Second approval** | Did the designated second person review a sufficiently evidenced outcome **after** independent verification? | **No new approval supplied** | Two signatures or a familiar wholesaler name are enough |
+| **4. Execution** | Was an authorized, separately controlled account change or payment performed under the verified and approved request? | **No action supplied** | That a proposed change was saved or money moved |
+| **5. Readback** | Was the actual resulting state or transaction receipt checked against what was authorized and logged? | **No result supplied** | A draft, plan or approval proves execution succeeded |
+
+The **held number** must be obtained independently from information already possessed before the suspicious email. A contact number in the new email, in an attachment it sends, or in a reply from the same unverified sender does not meet that boundary. When the previously held information cannot be verified or the call cannot reach an authorized supplier contact, the result is **unresolved**: keep the change and payment on hold and refer the question to the appropriate Hollybank decision owner. This lesson does not invent an alternative channel or authorize a shortcut.
+
+A properly scoped verification record, **if a call later takes place**, would document the source of the independently held number, who performed the check, when it happened, what exact request was discussed, its result and what remains uncertain. A second-person approval record should refer to that result. A later execution receipt should remain separate. All such fields are **pending** in this exercise; no call transcript, bank data or actual approval is supplied.
+
+### 9.5 Worked contrasting messages, without inventing an outcome
+
+**Actual classroom input:** A new email asks for changed bank details and supplies a phone number; Hollybank remembers that a similar scheme was blocked last month. The permitted decision **now** is to withhold the change, disregard the email's number and initiate the clinic's phone-back procedure using the independently held supplier number. The second person must not approve the change before the independent call verifies the requested change. Nothing in the supplied facts shows that this new call has occurred or that the supplier has confirmed the request.
+
+**Conditional branch A — supplier denies change.** If a separately authorized, properly directed future call **were** to establish that the supplier did not request changed details, the clinic would reject the new instruction and follow its existing escalation process. That is a hypothetical outcome, not a newly observed call.
+
+**Conditional branch B — supplier confirms change.** Even if such a future call verified the request, the second person would still need to perform the distinct approval required by the Hollybank rule. Confirmation would **not** equal permission to execute a transfer or prove that any record was changed.
+
+**Conditional branch C — the held channel cannot be reached.** If no independent result can be obtained, the approval gate remains unmet; leave the request pending rather than accepting an email-provided “urgent direct line.” The original example's row where a call denies the change is a contrast for **what such an outcome would imply**, not a real new verification receipt that EX063 supplies.
+
+| Proposed action | Evidence defect | Bounded response |
+|---|---|---|
+| “The same fraud was stopped last month; trust this email now.” | A previous outcome is not verification of a new request | Apply the rule again |
+| “The supplier wrote this direct number in the message.” | Channel can be controlled by the requester | Use only a separately held supplier number |
+| “Get the second person to sign before calling.” | Approval is detached from its required evidence | Hold approval pending independent check |
+| “I called the email's number and heard confirmation.” | The call is not independent of the suspicious request | Still unverified under the stated rule |
+| “A verified call occurred, so the payment is already complete.” | Verification is not execution or readback | Keep actual action status unknown |
+
+The risk is not limited to a familiar sender name or a previously successful defense. A message may mimic prior invoices and still direct a user toward a new unverified beneficiary. The exercise does not reveal any account digits or authorize changing vendor records; the teaching objective is **decision ordering and provenance**, not banking operations.
+
+### 9.6 Decision notes, negative controls and residual uncertainty
+
+The [NIST SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) emphasizes integrating preparation, response and improvement into cybersecurity risk management. This chapter borrows the general concept of evidence-based decisions and a reviewable record; **it does not declare the EX063 email a confirmed incident**, a completed investigation or a particular reporting obligation. A phone-back control can prevent a harmful change without proving how many fraud attempts occurred or whether the clinic is secure overall.
+
+**Negative control 1 — appearance.** A logo, invoice identifier or urgent tone, however credible, does not establish a verified bank-change instruction. **Negative control 2 — two people, one source.** Two employees reading the same unverified email are not an independent supplier callback. **Negative control 3 — previous victory.** The documented earlier stopped attempt does not verify today's email. **Negative control 4 — truthful verification with missing approval.** Even an authenticated future result would not bypass the separate second-person gate. **Negative control 5 — approval without completion.** An approval does not prove that any authorized change executed; execution and readback require their own records.
+
+A defensible **pending decision note** for the new exercise reads: “Wholesaler bank-detail change requested by new email; requester-provided callback number is not trusted for verification. Use the supplier number already held independently; no completed callback or verification result is supplied. Second-person approval, execution and readback remain **not evidenced**. Do not treat last month's stopped attempt as an exemption.” This is a model note from the stated facts, not a performed transaction.
+
+### 9.7 Independent EX063 practice
+
+Before consulting [EX063's worked explanation](#answer-ex063), write three sentences answering the original question: **which number to use**, **which number to ignore**, and **when a second approval could occur**. Then prepare a five-row evidence ledger for request, independent call, second approval, execution and readback. Label each as **supplied**, **required but not yet supplied**, or **not authorized**. Examine the conditional supplier-denies and supplier-confirms branches without inventing either outcome as fact.
+
+A complete answer explains why a prior blocked attack is not a new waiver and why a number inside a new email is not an independent source. It does not invent bank digits, a successful callback, an approval, payment or incident. The next lesson's paper-list problem is a different source-provenance question; neither issue should be “solved” with an undocumented assumption.
+
 ### Errors and limits
 
 The rule does not decide how long Hollybank keeps old invoices. Retention stays with the data-governance course. This chapter also leaves the drawer, the next restore line, and later setting changes to the lessons that follow.
@@ -1032,6 +1091,10 @@ The rule does not decide how long Hollybank keeps old invoices. Retention stays 
 ### Apply
 
 - **EX063 — The second message.** A new email asks Hollybank to change a wholesaler's bank details and prints a phone number to call. Last month the same kind of request was stopped. What do you call, what do you ignore, and when may the second person approve? *Rubric:* 3 = call the number the clinic already held; ignore the number in the email; the second person approves only after that call; last month's success is not a waiver;; 2 = the held number and the approval order;; 1 = one of those;; 0 = none.
+
+  - **Independent extension:** Separate the new request, independent supplier call, second approval, authorized execution and readback in a five-row evidence matrix. Mark unsupported steps **not supplied**. Compare hypothetical confirmed, denied and unreachable callbacks without asserting any occurred.
+  - **Negative controls:** Last month's blocked fraud is not a new waiver. The number printed in the email is not independent. Two staff members reading the same unverified email cannot replace the held-number call.
+  - **Worked result:** [EX063](#answer-ex063).
 
 <!-- open-cyber-academy:chapter-navigation:start ch-09 -->
 ### Continue studying — lesson 09 (chapter 09 of 20)
@@ -1070,6 +1133,72 @@ A list that urgent calls may use has a print date on the paper and the same date
 
 > **Synthetic case.** No dated print is added. Do not invent client names.
 
+
+### 10.3 Print intention, print artifact and approved log record
+
+A **reminder** is evidence that someone planned or scheduled printing. A **dated paper extract** is a particular physical snapshot with a stated production date; it is not automatically complete for every later registration. An **authorized change-log entry** is a record made by someone permitted to document that an identified print actually occurred. In Hollybank's fictional rules, **only Sofia or Dr. Moss may write the change log**, and a usable urgent-call list requires **the print date on the page and the same date in the log**. Those two pieces are related but not identical: the page carries rows; the log records the fact and source of the print.
+
+The case supplies a reminder and an **undated page in the drawer**. No corresponding print entry exists. The lesson does not supply a newly dated copy or a successful later verification. A page with neat handwriting can still be older than the drill's list; a drawer position cannot establish temporal provenance. A page missing its date cannot be promoted into this week's urgent-call source by guessing when it was printed.
+
+The [NIST CSF 2.0](https://doi.org/10.6028/NIST.CSWP.29) addresses managing information and protecting its integrity and availability. [NIST SP 800-53 Rev. 5, AU-3](https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final) discusses useful audit-record attributes such as event time, source and outcome. These are **conceptual references** for provenance-aware decision making, **not a NIST-defined veterinary front-desk procedure**, proof of Hollybank control implementation, or a legal retention rule.
+
+### 10.4 What a page and its log can—and cannot—prove
+
+The two-gate classroom rule for using a printed list for urgent calls is explicit:
+
+1. **Artifact gate:** The relevant sheet itself displays an identifiable **print date** suitable for the current urgent-call use. The date identifies a paper snapshot; it is not a guarantee of currentness after the cutoff.
+2. **Authorization/provenance gate:** The same print date is actually recorded in Hollybank's change log by **Sofia or Dr. Moss** as the print made for that purpose. The record would need to identify the relevant print, not merely repeat a date without an observable event.
+
+Both gates are missing for the page presently in the drawer. Even if a future page passed both, it would not prove **no new client registered since its cutoff**, that all possible recipients were eligible for calls, that the practice system was restored, or that a particular person was successfully contacted. Those are separate coverage and execution questions.
+
+| Available or proposed item | Evidence status in Chapter 10 | Proper decision |
+|---|---|---|
+| Existing calendar reminder | **Present**, scheduling intention | Not evidence that a list was printed |
+| Undated drawer page | **Present**, with names but no reliable print time | Cannot be treated as this week's authorized urgent-call list |
+| New dated page with a matching Sofia/Dr. Moss print line | **Hypothetical condition**, not released in this case | Might satisfy the two source gates for listed names, subject to purpose and cutoff limits |
+| A dated page but no authorized matching log line | **Hypothetical**, missing provenance gate | Do not mark it validated by the exercise's rule |
+| A log line claiming a print but no identified sheet | **Hypothetical**, missing artifact gate | No actual list is supplied for current use |
+| Caller absent from the undated page | **Present** as an EX064 premise | Absence from old or unverified subset is not proof of no clinic record |
+
+The example in Section 10.2 of “last Tuesday” is a **conditional illustration of what the rule would require**, not evidence that an actual Tuesday print was made or logged. Nothing may be entered into the change log merely to make the page appear current.
+
+### 10.5 Temporal provenance and completeness of the urgent-call population
+
+Three times or scopes need separate treatment: **when the page was printed**, **which registration records it contained at that snapshot**, and **when the desk is making a decision**. The case shows neither the new page's print date nor a matching log entry, so the evidence cannot bridge the old snapshot to this week's calling task. Two undated pages cannot be ordered chronologically just because one looks cleaner or newer.
+
+A dated sheet is still only a time-bounded view. Someone added after the print may be absent. A name absent from a sheet might also be omitted because of filters or partial source coverage. Accordingly, “not listed here” is narrower than “not registered,” “has no appointment” or “no record exists.” A positive row can show what that paper lists; a missing row cannot prove a universal negative without a verified, complete and appropriately current source.
+
+Separately, the **daily appointment sheet** is the desk's fallback record of today's interactions and expected visits; it is not the urgent-call list itself. The two purposes must not be silently merged. The later Information Security chapter on two papers addresses this boundary again. Neither paper authorizes staff to invent a client identity, clinical decision or appointment.
+
+### 10.6 Worked front-desk contrast with no invented print
+
+**Scenario supplied:** A caller provides a name that does not appear on the undated drawer page. The change log contains the recurring reminder but no print line, and the case has not released an authorized current client source. The staff member cannot say “Hollybank has no record” from this paper. They also cannot claim the caller has an appointment or that the system has been checked.
+
+**Safe paper fallback:** Record the caller's **supplied name and time of contact** on **today's appointment sheet**, label the issue **“confirm in the practice system when available”**, and withhold a final registration or appointment claim until an authorized later verification. This is a **pending contact**, not a newly booked visit. No actual name, call time, patient, treatment, system readback or resolution is invented by this worked teaching template.
+
+| Spoken or written alternative | Why it fails or succeeds | Outcome |
+|---|---|---|
+| “Your name is not printed; the clinic has no record.” | Unsupported negative from undated subset | **Refuse** |
+| “I remember that page was printed this Tuesday.” | Memory cannot supply a missing timestamp and matching authorized log | **Refuse** current-source claim |
+| “The reminder fired, so the page must be fresh.” | Task scheduling and execution are different events | **Refuse** |
+| “I have recorded your question for a checked answer when the authorized system is available.” | Accurately describes the bounded pending action | **Accept** as an unresolved note |
+| “I will confirm the appointment now.” | No current appointment record or authority given | **Do not promise** |
+| “Use the hypothetical last-Tuesday example as if it occurred.” | Conditional teaching comparison is not a newly issued source | **Refuse** |
+
+### 10.7 Follow-up gates, negative controls and record integrity
+
+A future check, **if and when the practice system is actually available**, would require an authorized worker to verify the relevant name/record and appointment status within the real practice workflow, resolve any ambiguity or duplication and document the actual outcome. The exercise has **no such verification result**, so the note remains pending. No later print, system restoration, legal record-retention rule or contact disposition may be asserted.
+
+**Negative control A — two matching undated sheets.** Agreement in names does not establish when either was printed. **Negative control B — date only.** A written date without the required Sofia/Dr. Moss log evidence does not pass the classroom rule. **Negative control C — log only.** An entry that somebody intended to print is not the sheet or its actual contents. **Negative control D — a missing caller.** Absence from any incomplete snapshot does not prove the person absent from the underlying system. **Negative control E — system may later return.** A future possibility is not current readback or a verified appointment.
+
+The [NIST SP 800-61 Rev. 3](https://csrc.nist.gov/pubs/sp/800/61/r3/final) supports the general principle that response and recovery decisions should be integrated into reviewable organizational processes. The dated-page plus matching-authorized-log pairing is **Hollybank's synthetic exercise rule**, not a requirement copied from the NIST publication. No real outage investigation, clinical decision or incident classification is claimed.
+
+### 10.8 Independent EX064 practice
+
+Write the original EX064 answer in three parts: what **source** you reject, what **negative assertion** you reject, and what you record on today's appointment sheet for later verification. Then prepare a table contrasting the reminder, undated page, an **unissued hypothetical** dated page and a **not-yet-performed** system check. For each give source, time/provenance, authorization, decision and remaining uncertainty. Explain why a page created after the drill could still omit a registration added after its own cutoff.
+
+Consult [EX064's worked result](#answer-ex064) after completing the reasoning. Credit requires leaving the old/undated page unusable as this week's confirmed urgent-call list, recording only supplied contact details and an unresolved verification request, and refusing to invent a page, print-log entry, patient, appointment or restored system.
+
 ### Errors and limits
 
 A dated page still omits anyone who registered after that morning. Those callers are checked in the practice system when it is up. This chapter does not set how long either paper is kept.
@@ -1077,6 +1206,10 @@ A dated page still omits anyone who registered after that morning. Those callers
 ### Apply
 
 - **EX064 — Which page may be phoned from?** The drawer holds a page of names. It has no print date. The change log has the reminder and no print line. A caller is not on the page. What do you refuse, and what do you write? *Rubric:* 3 = refuse the undated page as this week's list; do not say Hollybank has no record; write the caller's name and time on today's appointment sheet for a later system check;; 2 = refuse the page and avoid the "no record" claim;; 1 = one of those;; 0 = none.
+
+  - **Independent extension:** Identify the reminder, undated page, missing Sofia/Dr. Moss print-log entry, and caller absent from this page as four separate evidence items. State what matching dates on an actual page and authorized log would establish and what could still be absent after the snapshot.
+  - **Negative controls:** Do not infer no clinic record, invent a print or promise an appointment. Mark the contact pending on today's appointment sheet until an authorized practice-system check occurs.
+  - **Worked result:** [EX064](#answer-ex064).
 
 <!-- open-cyber-academy:chapter-navigation:start ch-10 -->
 ### Continue studying — lesson 10 (chapter 10 of 20)
@@ -1736,7 +1869,42 @@ Model answers for EX001–EX074. Sofia Lindqvist, Mr. Tomasz Nowak, Eastgate Tra
 
 **EX063.** Call the wholesaler on the number the clinic already held. Ignore the number printed in the new email. The second person approves only after that call. Last month's stopped attempt does not waive the rule.
 
+
+<a id="answer-ex063"></a>
+**Expanded EX063 worked evidence ledger.**
+
+| Stage | Known from the synthetic case | Safe decision and remaining gap |
+|---|---|---|
+| **Request** | A new email claims a wholesaler bank-detail change and provides a phone number; a similar earlier fraud was stopped | Treat this request as **unverified**; prior success is not a waiver |
+| **Independent verification** | The clinic possesses a previously held supplier number from an established bill or contract source | Call **that** number, **not the one inside the new email**; no current call result supplied |
+| **Second approval** | Hollybank's rule requires a second person only **after** the independently checked supplier response | Withhold approval until a valid check; no approval is observed |
+| **Execution** | No new bank-change or payment operation is supplied | Do not perform or report a transaction from the email alone |
+| **Readback** | No change receipt, executed transfer or checked account-state result supplied | Do not claim anything changed or was paid |
+
+**Three-part original answer:** Call the wholesaler at the independently held number Hollybank already possessed, ignore the phone number included in the new email, and let the designated second person approve **only after** the independent supplier check confirms the exact proposed change. Last month's successful refusal does not change that order.
+
+**Worked contrasts:** If a future held-number call **denied** the requested change, staff would reject the instruction; if it **confirmed** it, the distinct second-person approval would still be needed before any separately authorized execution; if no valid independent call could be completed, approval and action would stay on hold. These are **conditional branches**, not newly observed facts. Calling the email's own number or obtaining two signatures on the unverified message fails the independence requirement. The exercise supplies no account digits, callback result, new payment, completed approval or incident finding. Credit goes to answers that preserve all five evidence gates without inventing outcomes.
+
+
 **EX064.** The undated page is not this week's list. Do not say Hollybank has no record of the caller. Write the caller's name and the time on today's appointment sheet and mark the line for a later check in the practice system.
+
+
+<a id="answer-ex064"></a>
+**Expanded EX064 worked source-provenance table.**
+
+| Evidence item | What it supports | What it cannot establish |
+|---|---|---|
+| Weekly calendar reminder | A plan to print and lock a current list | That anybody actually printed a new page |
+| Drawer page with names and no date | An undated collection of names in the fictional drawer | Its age, being this week's approved urgent-call list or complete later registrations |
+| Change log with reminder but no print line by Sofia or Dr. Moss | No matching authorized print record is supplied | That a dated new page was checked or the practice system restored |
+| Caller name missing from the undated page | No matching entry **on that page** | No clinic record, appointment or registration anywhere |
+| Today's appointment sheet | Allowed place to record the caller's supplied name, time and unresolved check | A booked visit or validated identity |
+| Future practice-system check | **Not supplied** | No confirmation result may be reported |
+
+**Three-part answer:** Reject the undated drawer page as this week's authorized urgent-call list because it lacks a print date and a corresponding print record in the change log. Refuse to tell the caller “Hollybank has no record,” since the undated extract may omit later clients and does not prove absence from the underlying system. Write the caller's **supplied name and time** on **today's appointment sheet**, marked **“check in the practice system when available”**, without inventing an appointment or claiming the system was checked.
+
+**Contrast:** A **hypothetical** dated print plus the same print date recorded by Sofia or Dr. Moss would meet Hollybank's two classroom source gates for using that page within its cutoff and approved purpose; no such pair exists here. A later registration might still be absent even from a correctly dated sheet, so unresolved callers would require a separate authorized system check. No new print, patient, clinical event, restoration receipt or legal retention rule is asserted. Full credit requires source age/authority boundaries and an explicit pending verification rather than invented certainty.
+
 
 **EX065.** Last week's successful restore stays in that week. The new month's row stays empty until that month has its own dated result. The next attempt is restored into a test area, not onto the live mailbox.
 
