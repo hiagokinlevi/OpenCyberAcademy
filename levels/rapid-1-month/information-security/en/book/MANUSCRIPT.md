@@ -1456,13 +1456,91 @@ Sofia refuses the borrowed session. If the helper needs an account, it is a pers
 
 > **Synthetic case.** The helper has no personal name. Do not add one.
 
+
+### 13.3 A signed-in session does not authenticate a second person
+
+**Individual identity** is the account to which a worker's authorized activity is meant to be attributed. **Authentication** tests a claimant's control of the required authenticators during sign-in. A **session** is the authenticated state that an application maintains after that exchange. **Authorization** separately defines which tasks the account may perform. **Attribution** links an observed action to a principal identified by a system record; it is not absolute proof of which physical human used the keyboard.
+
+Hollybank replaced a reception password shared between workers with personal accounts because shared attribution made later review unreliable. The Saturday helper now proposes to use the nurse's *already authenticated* session, without signing in as the helper. This would bypass the very account boundary that was introduced to address the shared login: any recorded rota-print activity would normally appear under **the nurse's signed-in principal**, while the physical actor would be the helper. The exercise describes this consequence as a design risk, not as a live audit-log capture or proof that a real print occurred.
+
+An authenticated session may persist until an application ends it or requires reauthentication. Its existence does not mean that a different person who sits at the terminal has authenticated. Requiring the helper to use their own account is not defeated by the nurse being nearby or by the proposed action taking only a few seconds. Password sharing and *session borrowing* are distinct mechanisms that create a similar attribution problem.
+
+[NIST SP 800-63B-4, *Authentication and Authenticator Management*](https://pages.nist.gov/800-63-4/sp800-63b.html) distinguishes subscriber authentication, authenticators bound to subscriber accounts, and session management. Its session guidance does not make a borrowed browser session evidence of the borrower's identity. [NIST SP 800-53 Rev. 5, IA-2 (Identification and Authentication)](https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final) provides the general principle of uniquely identifying and authenticating organizational users. These principles inform the classroom analysis; no actual Hollybank session expiration, audit implementation, NIST assurance level, or authentication event has been independently inspected.
+
+### 13.4 Work from action to evidence to identity, not the reverse
+
+The proposed action is *printing the rota*, but the decision cannot ignore **whose authority executes it**. There are at least four separate questions:
+
+| Question | What the Hollybank fixture provides | Supported conclusion | What remains unobserved |
+|---|---|---|---|
+| Who currently owns the session? | The nurse is already signed in | The session is associated with the **nurse's account** | A real log record of the proposed print |
+| Who proposes to use the keyboard? | An unnamed Saturday helper | The physical actor would differ from the account holder if the helper used the session | The helper's identity, existing authorization, and any actual activity |
+| What operation is requested? | Printing the rota | The purpose can be described without expanding the helper's permissions | A completed printout, approval or authorization for that helper |
+| What must precede a personal account's first use? | Chapter 2's personal-account/second-factor model and Dr. Moss's written-approval rule | Obtain approval in the change log, then provision and authenticate **only if actually authorized** | A created helper account, bound factor, completed first sign-in or audit readback |
+
+The shared login problem is not repaired by labeling the helper's later activity “assisted work.” A system record containing the nurse's account ID would be **consistent** with the nurse performing an action or another person operating an unlocked session. Without appropriate observation and controls, that record alone cannot distinguish them. In security terms, the attribution is limited by the trustworthiness of the session-to-human boundary. This lesson does not claim the clinic's logs have been tampered with or that a compromise occurred.
+
+**Decision in the actual case:** Sofia **refuses use of the nurse's session**. If the helper genuinely needs system access, a separate role-and-scope request must be assessed and **Dr. Moss must approve a personal account in the change log before first use**, with the second factor required by the existing case rule. The new account must not be assumed created, nor may an unnamed helper inherit the nurse's authorizations. The proper authority, account and factor binding would be checked when—and only when—the organization actually carries out that separately approved process.
+
+### 13.5 Worked example: the nurse leaves the chair
+
+The nurse is signed in when the unnamed helper requests a one-task exception. If the helper operates that authenticated session, any application audit event may reflect **the nurse's account** rather than the actual helper. The employee's presence in the same room cannot make a different human's action authentically attributable to the signed-in nurse. The work might look harmless, but accurate responsibility becomes difficult to reconstruct if a later question asks who accessed a rota or other data.
+
+| Proposed response | Mechanism involved | Evidence/authority gate | Defensible decision |
+|---|---|---|---|
+| “Only print the rota, so use the nurse's screen.” | Session remains bound to the nurse | No separate helper sign-in or approval | **Refuse** the borrowed session |
+| “The nurse says it is okay.” | Permission from a colleague, not authenticated individual use | No Dr. Moss approval for new account and role | **Refuse** as an account substitute |
+| “Change the audit note afterward to the helper's name.” | Retroactive claim of actor identity unsupported by session evidence | No reliable proof of actor/source | **Do not fabricate** an audit event or rewrite a log |
+| “Use a personal account with second factor, after written approval.” | Distinct identity and authenticator binding | Requires Dr. Moss's documented approval **before first use** | Correct **conditional process**, not a performed provisioning |
+| “The helper already has a documented, individually authorized account.” | **Hypothetical alternative**, not an observed fact here | Verify that authorization and the person's own sign-in | Only then use their own authorized session |
+
+The original chapter's worked-example row about an **already approved account** illustrates this hypothetical branch. The exercise does **not** supply such an account. A new written approval would authorize a scoped step; it would not by itself prove that an account was created, its second factor bound, or a session used.
+
+### 13.6 Evidence chain for an authorized alternative
+
+A defensible future workflow separates **need**, **decision**, **technical execution**, **readback**, and **actual use**. Conflating them is how hurried exceptions become unverifiable operations.
+
+1. **Request:** describe the Saturday task, needed role, scope and duration. Printing the rota is not evidence of a broader right to inspect patient information.
+2. **Approval:** Dr. Moss decides the relevant individual-access request and records it **before first use** under Hollybank's written rule. A verbal assurance from a nurse is not the prescribed record.
+3. **Provisioning:** an authorized administrator, if approval exists, arranges the personal account and relevant second factor. No such action has occurred in the supplied scene.
+4. **Authentication:** the helper—not the nurse—uses the approved credentials/authenticator to obtain **their own** session. A successful account-level authentication supports stronger attribution but is not proof of all later physical actions.
+5. **Audit/review:** if appropriate log records are later collected, review the *actual* account, time, action and source while stating their limitations. No actual print event, session ID or audit trail is supplied for this exercise.
+6. **Departure/expiry:** future role endings require account-lifecycle checks under a separate authorization, as Chapter 8 explained; there is no reason to invent a new account's disable date now.
+
+[NIST SP 800-53 Rev. 5, AC-2 (Account Management)](https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final) provides general concepts for approving and managing accounts, and IA-2 concerns their identification and authentication. These references do **not** prescribe Dr. Moss's fictional change-log format or certify a real Hollybank log implementation.
+
+### 13.7 Negative controls and limits of audit attribution
+
+**Negative control A — time pressure.** Switching accounts takes a few seconds in the synthetic earlier exercise, but even a longer wait would not create authority to operate under someone else's session. An operational inconvenience is not a new approval.
+
+**Negative control B — stronger MFA for the nurse.** A phishing-resistant sign-in by the **nurse**, if hypothetically present, would still not authenticate the helper subsequently sitting at the terminal. Authentication strength and operator identity are separate questions.
+
+**Negative control C — a logged account name.** An application event under the nurse's account can suggest *which credential/session* was used, but without trustworthy actor binding it need not prove *which person* pressed print. Do not invent an actual event or falsely attribute an action to the nurse or helper.
+
+**Negative control D — approval on paper only.** Written authorization is necessary in the fictional rule; it does not mean an account and second factor were technically provisioned. The lesson makes no account, factor or completed print.
+
+**Negative control E — borrow for a low-risk print.** Even if no sensitive data are printed, the principal of an authorized action should remain individually attributable. This case's direct answer remains **refuse session borrowing**; it does not disable the nurse's account, revoke the locum's account, or change the rota's proper access path.
+
+### 13.8 Independent EX067 assessment
+
+Complete EX067's original scenario before consulting its answer. Write a three-part response: (a) explain why the helper cannot use the **nurse's signed-in session**, (b) identify the **account-level versus physical-actor attribution gap**, and (c) specify what would be required **before** any separate helper account is used (Dr. Moss's written approval, a personal account, appropriate second-factor binding and separate sign-in). Then build an evidence ledger for **request → approval → provisioning → session → audit event**, marking all unsupported results **not provided**.
+
+**Rubric falsifiers:** claiming the helper already has an account, a log proves who actually printed, that the nurse's verbal consent substitutes for Dr. Moss, or that the few-second task qualifies as an exception. There is no executed print or named helper. Compare your reasoning with [EX067 in the Worked results appendix](#worked-results).
+
 ### Errors and limits
 
 Refusing the session does not disable the nurse's account, and it does not decide the locum's leftover account from Chapter 8. A rota that part-time staff check from home still belongs behind sign-in, as Chapter 2 already placed it.
 
 ### Apply
 
-- **EX067 — Whose name is on the print?** A nurse is signed in. An unnamed Saturday helper asks to use that screen only to print the rota while the nurse steps away. What do you refuse, and what must exist before the helper gets an account? *Rubric:* 3 = refuse the borrowed session because actions would be recorded as the nurse; a personal account needs Dr. Moss's approval in the change log before first use; this lesson does not create the account;; 2 = refuse the session and name the approval;; 1 = one of those;; 0 = none.
+- **EX067 — Whose name is on the print?**
+  - **Objective:** Explain why borrowing a nurse's authenticated session undermines individual attribution, and specify the separately authorized path for the helper.
+  - **Inputs:** An unnamed Saturday helper asks to print the rota from the nurse's already signed-in screen while the nurse steps away. Hollybank previously removed the shared reception login, uses individually authorized accounts with a second factor, and requires Dr. Moss's written approval in the change log before first use.
+  - **Restrictions:** Do not create or claim an account, a print event, a log entry or an exception by convenience. Do not treat the nurse's presence, consent or MFA as authentication of the helper.
+  - **Task:** Refuse or accept the borrowed session with the attribution mechanism; distinguish the signed-in account from the physical actor; list the necessary request, written approval, personal account/factor and separate sign-in steps if access is truly required.
+  - **Expected evidence:** A short decision supported by the case, an attribution contrast for nurse session versus separately approved helper session, and a four-gate evidence ladder with all unperformed steps marked **not supplied**.
+  - **Rubric (0–3):** **3** = refuses borrowed session with clear account-versus-person audit limitation, requires Dr. Moss approval **before first use** followed by individually assigned account, second factor and own sign-in only if authorized, and avoids inventing any action; **2** = correctly refuses the session and requires written personal-account approval but omits either factor, independent sign-in or audit limitation; **1** = identifies only that sharing the session or account is inappropriate without a workable approval/attribution explanation; **0** = authorizes borrowing, fabricates a helper account/print/log, or provides no valid identity boundary.
+  - **Worked explanation:** [EX067 — Worked results](#worked-results).
 
 <!-- open-cyber-academy:chapter-navigation:start ch-13 -->
 ### Continue studying — lesson 13 (chapter 13 of 20)
@@ -1501,13 +1579,84 @@ The account itself still follows Chapter 2: a personal account, not the old shar
 
 > **Synthetic case.** The new receptionist is not given a personal name. No method is chosen here.
 
+
+### 14.3 Distinguish authenticator choice from personal-account permission
+
+An **authenticator** is a method for demonstrating control of authentication factors bound to an individual account. An **authenticator app** on a person's phone may produce one-time codes or participate in an out-of-band or cryptographic protocol, depending on implementation. A **physical security key** can perform cryptographic authentication, again depending on its capabilities, configuration and protocol. A password plus an appropriate authenticator may provide multi-factor authentication, but the mere words “phone app” or “security key” do not establish phishing resistance, an NIST authentication assurance level, or which access is authorized.
+
+The Hollybank narrative has **exactly two physical keys**, bought for **two nurses** who did not wish to use work applications on their personal phones. Their individual preferences and the workplace response are **specific to those two people**. A new unnamed receptionist now expresses a different preference: use a phone application. That request deserves a fresh, individual method decision; neither the nurses' preference nor the clinic's previous purchases establish which method this new person may or must use.
+
+Under the fictional clinic's rule, **Dr. Moss must write the chosen method for this receptionist** before Sofia issues any hardware, installs/configures an app or binds a factor to an account. This case records **no written choice**, no third-key purchase, no installed app and no new receptionist account. Preserving that uncertainty is a source-integrity decision, not an argument that one method is universally preferable.
+
+[NIST SP 800-63B-4](https://pages.nist.gov/800-63-4/sp800-63b.html) distinguishes authenticator types and their binding, lifecycle, privacy and session requirements. Its [phishing-resistance discussion](https://pages.nist.gov/800-63-4/sp800-63b/authenticators/#phishing-resistance) explains why a manually entered OTP may be vulnerable to relay, while suitable cryptographic authenticators can resist verifier impersonation. The specific Hollybank key and prospective app **lack protocol details**, so the course does not rate them or claim NIST conformance. [NIST SP 800-53 Rev. 5, IA-2 and AC-2](https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final) supplies broad identification and account-management principles, not the clinic's chosen device policy.
+
+### 14.4 Consent, possession, binding and responsibility
+
+A preference about using a **personal phone** is different from the organization's approval and the system's technical binding of an authenticator. The responsible person should distinguish **what the worker wishes to use**, **what the organization permits**, **what specific device or app is configured**, and **what is verifiably bound to that person's account**. Hollybank's case says two nurses declined personal-phone apps. It does **not** establish a general BYOD mandate or a legal consent basis, nor that a new receptionist has already consented to device management, data collection or a specific enrollment method.
+
+| Question | The two nurses | The new receptionist |
+|---|---|---|
+| Individual preference | Declined work apps on personal phones | Requests an app on a personal phone |
+| Historical hardware outcome | **Two keys purchased for those two nurses** | **No third key purchased or issued** |
+| Approved new method | Their original arrangement is part of the synthetic Chapter 2 history | **No Dr. Moss written choice in this chapter** |
+| Authenticator binding | Individual use is intended; specific protocols/identifiers are not supplied | **No app, device or key bound** |
+| Personal account and session | Workers are not to share reception login | Must have own properly approved account; **none newly created here** |
+| Actual successful sign-in | Not shown by a detailed authentication record in this lesson | **No sign-in observed** |
+
+An app installed on a device but **not associated with the approved personal account** would not establish that worker's MFA method. A physical key handed over informally could also create an attribution and custody problem. Authenticators should be issued/bound under an approved, individually attributable process and handled under the applicable organization policy. This is a **proposed review method**, not an executed Hollybank enrollment.
+
+### 14.5 Worked example: an unrecorded personal-phone request
+
+**Given:** The receptionist wants to use an app on a personal phone. The only keys recorded are the two purchased for the nurses. Dr. Moss has not documented a method for the new receptionist.
+
+**Decision:** Do **not** infer a third key must be purchased from the nurses' experience; do **not** install or enroll a phone app merely because the receptionist requests it; do **not** use the shared reception login. Ask Dr. Moss for a distinct, written approval of the account method and scope, taking into account the worker's preference and applicable clinic policy. Only after such a decision would technical enrollment be considered, with separate actual confirmation.
+
+| Proposed shortcut | Missing evidence or authorization | Defensible response |
+|---|---|---|
+| “The two nurses use keys, therefore issue a third.” | Neither a third purchase nor individual method approval exists | Refuse automatic hardware issuance |
+| “The new person wants an app; configure it now.” | Preference is not Dr. Moss's written approval or technical binding | Wait; do not install or enroll |
+| “Use the old shared reception account for Monday.” | Shared identity breaks individual attribution | Refuse; require own approved account |
+| “Dr. Moss hypothetically writes app for this person.” | **Conditional** approval scenario only, not yet observed | If documented, follow that decision under policy, then separately verify enrollment |
+| “Give one nurse's existing key to the receptionist.” | Key/identity binding and both workers' needs would be confused | Refuse to transfer without an authorized, documented lifecycle process |
+
+This table's hypothetical approval **is not a new event**. In the actual case there remains **no selected method**, no third key, no app enrollment and no completed account provisioning. A written decision would be necessary for the permitted direction, but would still not serve as proof that the technical configuration has been completed.
+
+### 14.6 Evaluate method risks without making up a winner
+
+A useful decision record would compare **protocol capabilities**, **device ownership and worker expectations**, **phishing resistance when relevant**, **recovery/loss handling**, **supported account binding**, **shared-device risk**, and **administrative feasibility**. A physical key can avoid requiring a work app on someone's personal phone, but must be correctly assigned and retained. A phone authenticator can be convenient for a worker who agrees to an appropriate policy, but details of device access, app behavior and organizational responsibilities require explicit review. Either can fail its intended purpose when informally shared, enrolled against the wrong account or left unrecorded.
+
+The case provides **no model numbers, app implementation, privacy notice, device-management arrangement, binding receipts or assurance classification**. Thus it would be technically inaccurate to say these particular keys are necessarily phishing-resistant, the prospective app is necessarily weak, or the clinic has adopted a specific regulatory regime. The **primary finding** is not which is best in the abstract; it is that **the per-person approval and documented method are missing**.
+
+**Worked contrasting branch A (conditional):** If Dr. Moss later documented an app as acceptable for this particular worker, and the employee agreed under an applicable device-use process, Sofia could seek approved provisioning and binding steps. This chapter does not assert either event.
+
+**Worked contrasting branch B (conditional):** If Dr. Moss later approved a separate physical key, procurement, assignment and binding would have to be managed. This is **not** a reported third purchase, and the original two keys remain associated with the two nurses. Neither conditional branch authorizes using the shared login.
+
+### 14.7 Negative controls and evidence ladder
+
+**Negative control A — copy the nurses' preference.** A person's decision about a personal phone is not portable to a different employee. **Negative control B — issue first, approve later.** A configured authenticator is not retroactive evidence that the organization approved it. **Negative control C — account versus method.** A personal account request is separate from a specific app or key; neither a method choice nor a password creates the other. **Negative control D — two keys in a drawer.** Mere possession does not establish which person or account the factor belongs to. **Negative control E — simulated return:** a new worker does not automatically inherit the locum account or its old authenticators.
+
+A five-field ledger keeps these stages separate: **request/preference**, **Dr. Moss written method approval**, **individual account authorization**, **approved issuance/binding**, and **successful technical readback**. For the new receptionist, only the **request** is supplied. The remainder are **not recorded in this case**.
+
+### 14.8 EX068 independent comparison and answer check
+
+Answer EX068 before consulting [its worked explanation](#worked-results): state why the two nurses' **two keys** do not establish the receptionist's method; what the worker's phone-app request does and does not authorize; what Dr. Moss must approve and record; and why the shared reception login is never a valid shortcut. Then create a comparison table for **app on personal phone** versus **separately assigned physical key**, with columns *individual choice*, *organizational approval*, *binding/attribution*, *operational consideration* and *unsupported assumption*. Keep the app/key outcomes **conditional**.
+
+Full credit requires preserving **exactly two purchased keys for the two nurses**, no third purchase, no app installation, no chosen method and no new account in the given evidence. An answer that names a specific product, assumes an MFA assurance level, invents consent or treats a colleague's preference as a standing policy fails the boundary check.
+
 ### Errors and limits
 
 Writing the method does not disable anyone else's factor, and it does not prove the person has completed the ten-minute catch-up topics. Those topics are a separate list.
 
 ### Apply
 
-- **EX068 — Which method is allowed on Monday?** A new receptionist wants an app on a personal phone. The only keys in the log are the two bought for the nurses. Dr. Moss has not written a method for the new person. What do you refuse to copy, and what do you refuse to install? *Rubric:* 3 = do not issue a key merely because the nurses have keys; do not install the app before Dr. Moss writes this person's method; the account still must not be the shared reception login;; 2 = block both the copied key and the early app;; 1 = one block;; 0 = none.
+- **EX068 — Which method is allowed on Monday?**
+  - **Objective:** Distinguish the two nurses' existing security-key arrangement from a new receptionist's unapproved app request and explain separate per-person authenticator binding.
+  - **Inputs:** Two nurses declined work apps on their personal phones, so Hollybank bought **two keys for those nurses**. A new unnamed receptionist requests a phone app. Dr. Moss has **not** recorded a method for that individual.
+  - **Restrictions:** Do not buy/issue a third key, install/enroll an app, choose a method, create an account, assume device consent or copy another person's preference or authenticator. Do not use the shared reception login.
+  - **Task:** Compare the distinct phone-app and physical-key methods and risks; state which facts are established, what Dr. Moss must approve before use, and how an approved individual account and chosen factor would later need to be bound and checked.
+  - **Expected evidence:** A concise conditional decision, a per-person method/authority/binding table, and preservation of the two original keys without fabricated issuance or successful sign-in.
+  - **Rubric (0–3):** **3** = keeps the two existing keys assigned to the two nurses, refuses automatic third key and unapproved app, requires a **written individual method decision by Dr. Moss** and personal account/factor binding before use, rejects shared login and does not invent approval or enrollment; **2** = blocks both shortcuts and names required written approval but omits account/binding or reason the nurses' choice is not transferable; **1** = blocks only the key or the app, or vaguely says to ask permission without preserving the identity boundary; **0** = claims a third purchase, installed app, automatic method selection or shared-account exception, or gives no valid authorization reasoning.
+  - **Worked explanation:** [EX068 — Worked results](#worked-results).
 
 <!-- open-cyber-academy:chapter-navigation:start ch-14 -->
 ### Continue studying — lesson 14 (chapter 14 of 20)
@@ -2061,7 +2210,39 @@ Model answers for EX001–EX074. Sofia Lindqvist, Mr. Tomasz Nowak, Eastgate Tra
 
 **EX067.** Refuse the borrowed session. The helper's clicks would be recorded as the nurse. A personal account, if needed, waits for Dr. Moss's approval in the change log before first use. This answer does not create the account.
 
+
+**Expanded worked result — EX067 (identity, session and attribution).**
+
+| Claim / step | Evidence in the Hollybank case | Correct interpretation |
+|---|---|---|
+| Nurse's session is already authenticated | The nurse is signed in before the helper's request | A session associated with **the nurse's account**, not an authenticated helper |
+| Helper proposes printing rota | A request only, no completed printout | If performed on this session, an application event would normally attribute the account activity to the nurse, which would not reliably identify the physical actor |
+| Permission from the nurse | A possible informal assurance, not a Dr. Moss change-log approval | Does **not** establish separately authorized helper access |
+| Helper's personal account and MFA | **Not supplied** for this helper | Require a scope/role request, Dr. Moss written approval, properly bound personal account and second factor **before first use** |
+| Own session and audit result | **Not supplied** | The helper may use only their own approved session if later provisioned; do not assert successful sign-in or a captured audit event |
+
+**Worked decision:** Refuse the nurse's signed-in screen even for a one-task rota print. The account that owns the session is **the nurse's**; an audit entry under that account would support that it was *the account used*, not independently prove that the nurse pressed print. The unnamed helper has not authenticated individually. Hollybank's allowed next step, **if the task genuinely requires system access**, is a separate access request with **Dr. Moss's written approval in the change log before first use**, followed by authorized individual account provisioning, second-factor setup and the helper's own sign-in. This chapter performs none of those actions.
+
+**Contrast and falsifiers:** A stronger second factor previously used by the nurse does not authenticate somebody who borrows the session afterward. A nearby nurse or a fast task cannot waive an individual identity boundary. An answer inventing an account, actual print, session identifier or audit readback is unsupported. A valid response separates **actor, authenticated principal, authorization, provisioning and observed activity**, while preserving the existing nurse account and the prior locum lesson unchanged.
+
+
 **EX068.** Do not issue a third key just because two nurses have keys. Do not install an app before Dr. Moss writes the method for this receptionist. The account must not be the shared reception login.
+
+
+**Expanded worked result — EX068 (method choice and authenticator binding).**
+
+| Dimension | Existing two nurses | New receptionist |
+|---|---|---|
+| Preference | Declined work apps on personal phones | Requests app use on a personal phone |
+| Hardware recorded | **Exactly two keys purchased for the two nurses** | **No third key purchased or issued** |
+| Per-person method approved | The original nurses' arrangement is described in Chapter 2 | **No Dr. Moss written decision supplied** |
+| Account and authenticator binding | Individual account use remains the intended rule; technical protocols are not supplied | No new account, app or bound factor established |
+| Real sign-in observed here | No relevant authentication receipt provided | No enrollment or sign-in performed |
+
+**Worked decision:** Refuse to automatically issue a third physical key just because two nurses were given keys; their objection to personal-phone apps was **their own**, not this receptionist's decision. Also refuse to install or bind the requested phone app until **Dr. Moss has made and recorded a separate method approval for this receptionist**. The worker must use an individually approved account, **not the shared reception login**, with an approved factor bound to that account if provisioning later occurs. Neither method has been chosen in the actual scene.
+
+**Conditional comparison:** A phone application may support different authentication protocols and needs an appropriate device-use agreement; a physical key has different ownership, custody, support and binding considerations. Neither is automatically sufficient or phishing-resistant merely from its label. If a later approved app decision were actually recorded, authorized enrollment and verification would follow; if a key were later approved, separate procurement/assignment and binding would be necessary. **Neither event has happened in this case**. Full credit preserves the two nurse keys, the absent receptionist method decision, the personal-account rule and the prohibition on fabricated third purchases, apps, consents or login results.
+
 
 **EX069.** Call Sofia, then Dr. Moss, then the technician. Hold the wipe until today's notes are shown in the practice system or on the day's paper. If they exist only on the tablet, Dr. Moss decides after that fact is logged. No wipe is sent by this answer.
 
