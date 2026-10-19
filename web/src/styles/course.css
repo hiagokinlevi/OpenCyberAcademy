@@ -1,4 +1,11 @@
 .course-heading { padding: 46px 0 30px; background: var(--hero-gradient); border-bottom: 1px solid var(--line); }
+.course-focus { margin-top: 32px; padding: 24px; border: 1px solid var(--line); background: var(--surface); }
+.course-focus h2 { margin: 7px 0 18px; font-size: 1.5rem; }
+.course-focus dl { display: grid; grid-template-columns: minmax(120px, 190px) minmax(0, 1fr); gap: 9px 20px; margin: 0; }
+.course-focus dt { color: var(--gold); font-weight: 600; }
+.course-focus dd { margin: 0; }
+.course-focus p { margin: 16px 0 0; color: var(--muted); font-size: .85rem; }
+@media(max-width:620px) { .course-focus dl { grid-template-columns: 1fr; gap: 3px; }.course-focus dd { margin-bottom: 10px; } }
 .published-lesson-directory { margin-top: 32px; padding: 24px; border: 1px solid var(--line); background: var(--surface); }
 .published-lesson-directory h2 { font-size: 1.5rem; }
 .published-lesson-directory p { color: var(--muted); }

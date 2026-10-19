@@ -20,6 +20,21 @@ def unit_title(value: str) -> str:
     return re.sub(r"^(?:Chapter|Capítulo|Lesson|Aula|Lección)\s+\d+\s*[—:-]\s*", "", value, flags=re.I).strip()
 
 
+def render_course_focus(course: dict, language: str) -> str:
+    """Show the source-backed curriculum brief only in its authored language."""
+    if language != "en":
+        return ""
+    fields = [("Scope", "scope"), ("Audience", "audience"),
+              ("Entry knowledge", "entry_knowledge"), ("Intended outcome", "exit_goal")]
+    if any(not course.get(key) for _, key in fields):
+        return ""
+    items = "".join(f'<dt>{label}</dt><dd>{html.escape(str(course[key]))}</dd>' for label, key in fields)
+    return ('<section class="shell course-focus" aria-labelledby="course-focus-title">'
+            '<div class="eyebrow">COURSE BRIEF</div><h2 id="course-focus-title">What you will study</h2>'
+            f'<dl>{items}</dl><p>The intended outcome is a learning goal, not a completion or accreditation claim.</p>'
+            '</section>')
+
+
 def render_course_directory(guide: dict, level: str, area: str, language: str, course_number: int) -> str:
     ui = TEXT.get(language, TEXT["en"])
     chapter_lessons = guide["chapter_lessons"]
