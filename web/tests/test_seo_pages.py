@@ -347,6 +347,14 @@ def test_course_directory_and_markdown_follow_new_github_text_without_rebuild(cl
 
 
 def test_course_selection_opens_first_published_lesson_and_course_guide_is_indexable(client):
+    english = client.get("/courses/rapid-1-month/cybersecurity/")
+    assert english.status_code == 200
+    assert 'id="course-focus-title"' in english.text
+    assert "Foundations, threats, controls, defense lifecycle" in english.text
+    assert "No prior security role; basic digital literacy" in english.text
+    assert "The intended outcome is a learning goal" in english.text
+    assert 'name="description" content="Foundations, threats, controls' in english.text
+
     host = {"host": "pt.opencyber.academy"}
     route = "/courses/technical-18-months/data-governance/"
     start = client.get(route + "start/?lang=pt", headers=host, follow_redirects=False)
@@ -361,6 +369,7 @@ def test_course_selection_opens_first_published_lesson_and_course_guide_is_index
     assert 'href="/courses/technical-18-months/data-governance/chapters/pt/1/"' in course.text
     assert 'href="/courses/technical-18-months/data-governance/chapters/pt/18/"' in course.text
     assert 'Carregando o livro' not in course.text
+    assert 'id="course-focus-title"' not in course.text
     assert 'id="course-reader-title"' not in course.text
     schema = json.loads(re.search(r'<script type="application/ld\+json">(.*?)</script>', course.text, re.S).group(1))
     assert schema[0]["inLanguage"] == "pt"

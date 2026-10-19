@@ -20,7 +20,7 @@ from fastapi.responses import FileResponse, HTMLResponse, JSONResponse, PlainTex
 from pydantic import BaseModel, Field
 
 from access import identity as access_identity
-from course_directory import render_course_directory
+from course_directory import render_course_directory, render_course_focus
 from locales import ACTIVE_INTERFACES, LANGUAGES, language_for_host, site_for_language
 from practice_engine import InvalidPractice, validate_practice
 from public_usage import collect as collect_public_usage, counts as public_usage_counts
@@ -1158,7 +1158,7 @@ async def public_course_page(request: Request, level: str, area: str, lang: str 
             raise HTTPException(503, "Course page is unavailable")
         page = target.read_text(encoding="utf-8")
     guide = await course_details(request, level, area, language)
-    directory = render_course_directory(guide, level, area, language, int(course["number"]))
+    directory = render_course_focus(course, language) + render_course_directory(guide, level, area, language, int(course["number"]))
     if '<div id="live-lesson-directory"></div>' not in page:
         raise HTTPException(503, "Course page needs a current deployment")
     page = page.replace('<div id="live-lesson-directory"></div>', directory, 1)
@@ -1169,7 +1169,7 @@ async def public_course_page(request: Request, level: str, area: str, lang: str 
     course_name = course.get("titles", {}).get(language) or course["title"]
     localized_title = f"{level_name} · {course_name} · OpenCyber Academy"
     descriptions = {
-        "en": f"Study the free {level_name.lower()} course in {course_name}. Open the published lessons, examples, exercises and worked answers in order.",
+        "en": f"{course.get('scope') or course_name} Free {level_name.lower()} course with published lessons, examples, exercises and worked answers.",
         "pt": f"Estude gratuitamente {course_name} no nível {level_name.lower()}. Acesse as aulas publicadas em sequência, com exemplos, exercícios e respostas comentadas.",
         "es": f"Estudia gratis {course_name} en el nivel {level_name.lower()}. Sigue las lecciones publicadas con ejemplos, ejercicios y respuestas desarrolladas.",
     }

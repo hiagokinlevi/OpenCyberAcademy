@@ -86,6 +86,14 @@ CHAPTER_LESSONS_MARKER = "<!-- open-cyber-academy:chapter-lessons -->"
 NUMBER = re.compile(r'Course\s+(\d{3})\s+of\s+207')
 
 
+def course_focus(readme: str, label: str) -> str:
+    """Copy a course's published curriculum brief without inventing new claims."""
+    match = re.search(rf"\*\*{re.escape(label)}:\*\*\s*(.*?)(?=\s+\*\*[^*]+:\*\*|\n|$)", readme)
+    if not match:
+        raise ValueError(f"Missing {label} in course README")
+    return match.group(1).strip()
+
+
 def authored_index() -> dict:
     """Only source-backed lesson and chapter links belong in discovery maps."""
     index = {}
@@ -148,6 +156,10 @@ def build() -> dict:
             "level": level,
             "area": area,
             "title": title,
+            "scope": course_focus(text, "Scope"),
+            "audience": course_focus(text, "Audience"),
+            "entry_knowledge": course_focus(text, "Entry knowledge"),
+            "exit_goal": course_focus(text, "Exit goal"),
             "titles": {"en": title, **SUBJECT_TITLES[title]},
             "planned_chapters": chapters,
             "instructional_weeks": INSTRUCTIONAL_WEEKS[level],
