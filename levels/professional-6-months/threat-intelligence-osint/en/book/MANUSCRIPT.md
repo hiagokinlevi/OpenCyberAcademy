@@ -867,7 +867,7 @@ Automated checks catch patterns, not meaning.
 - **EX051 — Lab failure.** Which check failed and why? *Rubric:* 3 = no staff email; address in text; 2 = check only; 1 = label; 0 = none.
 - **EX052 — Fix and rerun.** How is the failure fixed and confirmed? *Rubric:* 3 = replace with role; rerun shows release; 2 = one; 1 = ignore; 0 = none.
 - **EX053 — Check purposes.** Explain why the confidence check exists. *Rubric:* 3 = readers need to know certainty; 2 = partial; 1 = decoration; 0 = none.
-- **EX054 — Missed by script.** Name something the script would miss. *Rubric:* 3 = names, client addresses, other domains; 2 = vague; 1 = vague; 0 = none.
+- **EX054 — Missed by script.** Name something the script would miss. *Rubric:* 3 = names, client addresses, other domains; 2 = one correct item without the other two; 1 = vague; 0 = none.
 - **EX055 — New check.** Propose a new check with a test case. *Rubric:* 3 = check + failing test + passing test; 2 = check + one test; 1 = check only; 0 = none.
 
 ### Synthesis
